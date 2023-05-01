@@ -20,6 +20,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { HomeComponent } from './component/home/home.component';
+import { HomeBuyerComponent } from './component/home-buyer/home-buyer.component';
+import { HomeSellerComponent } from './component/home-seller/home-seller.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
     CategoryComponent,
     CategoryListarComponent,
     UserComponent,
-    UserListarComponent
+    UserListarComponent,
+    HomeComponent,
+    HomeBuyerComponent,
+    HomeSellerComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
