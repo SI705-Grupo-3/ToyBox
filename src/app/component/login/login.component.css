@@ -1,9 +1,15 @@
+html, body {
+  background-color: #53afe5;
+  margin: 0;
+  padding: 0;
+  height:inherit;
+}
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #0077be;
+  background-color: #53afe5;
 }
 
 mat-card {

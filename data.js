@@ -97,9 +97,29 @@ module.exports = function(){
         name: "Fernando",
         last_name: "Fernández",
         email: "ffernandez@hotmail.com",
-        phone: 01234567,
+        phone: 901234567,
         username: "ffernandez12",
         password: "ffernandez123",
+      },
+      {
+        id: 11,
+        type: "cliente",
+        name: "Joc",
+        last_name: "C",
+        email: "joc@hotmail.com",
+        phone: 901234967,
+        username: "joc",
+        password: "123",
+      },
+      {
+        id: 12,
+        type: "vendedor",
+        name: "Joc",
+        last_name: "C",
+        email: "joc2@hotmail.com",
+        phone: 901234967,
+        username: "joc",
+        password: "321",
       }
     ],
     product_registrations: [
@@ -112,12 +132,7 @@ module.exports = function(){
         description: "Un paquete de cartas de diferentes colores.",
         price: 2.40,
         stock: 190,
-        categories: [
-          {
-            id: 1,
-            name: "Juegos de Mesa",
-          },
-        ],
+        category_id: 1,
       },
       {
         id: 2,
@@ -125,12 +140,7 @@ module.exports = function(){
         description: "Un rompecabeza didáctico de tu personaje favorito.",
         price: 8.50,
         stock: 180,
-        categories: [
-          {
-            id: 2,
-            name: "Puzzles",
-          },
-        ],
+        category_id: 2,
       },
       {
         id: 3,
@@ -138,12 +148,7 @@ module.exports = function(){
         description: "La muñeca barbie con diferentes trajes.",
         price: 11.90,
         stock: 105,
-        categories: [
-          {
-            id: 3,
-            name: "Muñecas",
-          },
-        ],
+        category_id: 3,
       },
       {
         id: 4,
@@ -151,12 +156,7 @@ module.exports = function(){
         description: "Un oso de peluche de tamaño mediano.",
         price: 36.50,
         stock: 50,
-        categories: [
-          {
-            id: 4,
-            name: "Peluches",
-          },
-        ],
+        category_id: 4,
       },
       {
         id: 5,
@@ -164,12 +164,7 @@ module.exports = function(){
         description: "Un libro con increíbles cuentos de fantasías para niños.",
         price: 8.90,
         stock: 83,
-        categories: [
-          {
-            id: 5,
-            name: "Libros Infantiles",
-          },
-        ],
+        category_id: 5,
       },
       {
         id: 6,
@@ -177,12 +172,7 @@ module.exports = function(){
         description: "El libro ideal para que tu niño aprenda a leer y escribir.",
         price: 25.00,
         stock: 95,
-        categories: [
-          {
-            id: 6,
-            name: "Aprendizaje",
-          },
-        ],
+        category_id: 6,
       },
       {
         id: 7,
@@ -190,12 +180,7 @@ module.exports = function(){
         description: "Un muñeco de Superman con todos sus accesorios.",
         price: 12.80,
         stock: 40,
-        categories: [
-          {
-            id: 7,
-            name: "Figuras de Acción",
-          },
-        ],
+        category_id: 7,
       },
       {
         id: 8,
@@ -203,12 +188,7 @@ module.exports = function(){
         description: "Lego del videojuego Minecraft a buen precio.",
         price: 205.60,
         stock: 80,
-        categories: [
-          {
-            id: 8,
-            name: "Construcción",
-          },
-        ],
+        category_id: 8,
       },
       {
         id: 9,
@@ -216,12 +196,7 @@ module.exports = function(){
         description: "Un carro a control remoto de diferentes colores.",
         price: 96.50,
         stock: 150,
-        categories: [
-          {
-            id: 9,
-            name: "Coches",
-          },
-        ],
+        category_id: 9,
       },
       {
         id: 10,
@@ -229,12 +204,7 @@ module.exports = function(){
         description: "Un libro didáctico para colorear.",
         price: 20.00,
         stock: 300,
-        categories: [
-          {
-            id: 10,
-            name: "Arte",
-          },
-        ],
+        category_id: 10,
       },
     ],
     categories: [

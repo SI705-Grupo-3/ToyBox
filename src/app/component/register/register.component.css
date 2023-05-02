@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100hv;
-  background-color: #0077be;
+  height: 100%;
+  background-color: #53afe5;
 }
 
 mat-card {
@@ -19,7 +19,7 @@ mat-card-header{
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   align-self: center;
 }
 .title {
@@ -35,7 +35,7 @@ mat-card-header{
 .actions {
   display: flex;
   justify-content: center;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .options {

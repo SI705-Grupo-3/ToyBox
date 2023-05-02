@@ -34,4 +34,13 @@ export class UserService {
       map(users => users.find(user => user.username === username && user.password === password) != null)
     );
   }
+  getType(username: string, password: string): Observable<string> {
+    return this.http.get<User[]>(this.url).pipe(
+      map(users => {
+        const user = users.find(user => user.username === username && user.password === password);
+        return user ? user.type : '';
+      })
+    );
+  }
+
 }

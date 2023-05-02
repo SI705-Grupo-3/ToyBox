@@ -19,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { HomeComponent } from './component/home/home.component';
 import { HomeBuyerComponent } from './component/home-buyer/home-buyer.component';
 import { HomeSellerComponent } from './component/home-seller/home-seller.component';
@@ -28,7 +28,12 @@ import { RegisterComponent } from './component/register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,13 @@ import { MatSelectModule } from '@angular/material/select';
     MatGridListModule,
     MatCardModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

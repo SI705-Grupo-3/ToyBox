@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -33,7 +34,14 @@ export class LoginComponent implements OnInit{
       this.userService.login(this.user.username, this.user.password)
       .subscribe(result => {
         if(result===true){
-          this.router.navigate(['/home']);
+          this.userService.getType(this.user.username, this.user.password).subscribe(type => {
+            const userType = type.toLowerCase();
+            if(userType === "cliente"){
+              this.router.navigate(['/home-buyer']);
+            }else{
+              this.router.navigate(['/home-seller']);
+            }
+          });
         }else{
           this.errorMessage = "Usuario o contraseña incorrecta.";
           this.form.reset();

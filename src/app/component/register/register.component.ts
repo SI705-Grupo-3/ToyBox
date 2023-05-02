@@ -45,7 +45,12 @@ export class RegisterComponent {
       this.userService
         .register(this.user)
         .subscribe((data) => this.router.navigate(['users']));
-      this.router.navigate(['/home']); //inicio comprador o vendedor
+      if(this.form.value['type'].toLowerCase()=="cliente"){ //inicio comprador o vendedor
+        this.router.navigate(['/home-buyer']);
+      }else{
+        this.router.navigate(['/home-seller']);
+      }
+
     } else {
       this.errorMessage = 'Complete correctamente los campos.';
     }
