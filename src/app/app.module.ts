@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeComponent } from './component/home/home.component';
@@ -25,6 +25,10 @@ import { HomeBuyerComponent } from './component/home-buyer/home-buyer.component'
 import { HomeSellerComponent } from './component/home-seller/home-seller.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +58,10 @@ import { RegisterComponent } from './component/register/register.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

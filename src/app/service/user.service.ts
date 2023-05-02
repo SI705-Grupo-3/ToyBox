@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
 
@@ -17,7 +17,7 @@ export class UserService {
     return this.http.get<User[]>(this.url); //http://localhost:5000/users
   }
 
-  insert(user : User){
+  register(user : User){
      return this.http.post(this.url, user);
   }
   listId(id:number){
@@ -29,4 +29,9 @@ export class UserService {
   delete(id: string) {
     return this.http.delete(this.url+"/"+id);
  }
+  login(username: string, password: string): Observable<boolean>{
+    return this.http.get<User[]>(this.url).pipe(
+      map(users => users.find(user => user.username === username && user.password === password) != null)
+    );
+  }
 }
