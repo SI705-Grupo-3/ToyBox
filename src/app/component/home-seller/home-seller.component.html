@@ -1,0 +1,50 @@
+<router-outlet></router-outlet>
+<body [hidden]="route.children.length != 0">
+  <div class="container">
+    <div class="header">
+      <button class="btn-user" mat-button>
+        <img
+          class="user"
+          src="../../../assets/img/user.png"
+          alt="Imagen del usuario"
+        />
+      </button>
+    </div>
+    <div class="product-tittle">
+      <h1>Mi Tienda</h1>
+    </div>
+    <div class="product-container">
+      <mat-card *ngFor="let product of lista" clickable>
+        <mat-card-header>
+          <div class="product-img" mat-card-avatar>
+            <img
+              [src]="'../../../assets/img/producto' + product.id + '.png'"
+              alt="{{ product.name }}"
+              style="height: 100px; width: 100px"
+            />
+          </div>
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <mat-card-subtitle>Precio ${{ product.price }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <!-- Agregar botón de editar -->
+          <button mat-icon-button color="primary" aria-label="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- Agregar botón de eliminar -->
+          <button mat-icon-button color="warn" aria-label="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="options">
+      <div class="back">
+        <button mat-raised-button color="basic" routerLink="/home">Volver</button>
+      </div>
+      <div class="nuevo">
+        <button mat-raised-button color="primary" routerLink="/home">Nuevo</button>
+      </div>
+    </div>
+  </div>
+</body>

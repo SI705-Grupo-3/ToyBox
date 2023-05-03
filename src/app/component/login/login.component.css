@@ -1,0 +1,75 @@
+html, body {
+  background-color: #53afe5;
+  margin: 0;
+  padding: 0;
+  height:inherit;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #53afe5;
+}
+
+mat-card {
+  max-width: 400px;
+  width: 100%;
+  background-color: #5cc1fb;
+  border-radius: 5px;
+  text-align: center;
+  border-color: #324a58;
+  border-width: 1px;
+}
+mat-card-header{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  align-self: center;
+}
+.title {
+  font-size: 2em;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0.08rem 0px 0px black;
+  text-decoration: double;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.options {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options a {
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0.05rem 0px 0px black;
+}
+
+.options a:not(:last-child) {
+  margin: 1em;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #000000;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-width: 2px;
+}

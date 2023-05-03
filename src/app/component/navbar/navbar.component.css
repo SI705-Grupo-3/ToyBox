@@ -1,0 +1,14 @@
+.example-spacer{
+    flex: 1 1 auto;
+}
+button{
+    margin: 0px 20px;
+    background-color:#007BFF;
+    --mdc-protected-button-container-color: #007BFF;
+}
+mat-toolbar{
+    background: #007BFF;
+}
+.mat-mdc-raised-button.mat-unthemed{
+    --mdc-protected-button-container-color: #007BFF;
+}
