@@ -1,0 +1,78 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="title">Registrarse</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (submit)="register()">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de usuario</mat-label>
+          <mat-select formControlName="type" required>
+            <mat-option value="Cliente">Cliente</mat-option>
+            <mat-option value="Vendedor">Vendedor</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa tu nombre"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa tu apellido"
+            formControlName="last_name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa tu email"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Teléfono</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa tu teléfono"
+            formControlName="phone"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa tu usuario"
+            formControlName="username"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            formControlName="password"
+          />
+        </mat-form-field>
+        <p style="color: red">{{ errorMessage }}</p>
+        <div class="actions">
+          <button mat-raised-button color="accent" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+      <div class="back">
+        <button mat-raised-button color="basic" routerLink="/home">
+          Volver
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

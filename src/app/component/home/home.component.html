@@ -1,0 +1,20 @@
+<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html [hidden]="route.children.length!=0">
+  <head>
+    <meta charset="UTF-8">
+    <title>ToyBox - Página de Inicio</title>
+  </head>
+  <body>
+    <div class="container mat-elevation-z10">
+      <h1 class="title mat-display-1">ToyBox</h1>
+      <p class="description mat-body-1">La plataforma en línea para encontrar los juguetes perfectos para tus hijos</p>
+      <div class="buttons">
+        <button mat-raised-button color="primary" routerLink="/login">Login</button>
+        <span class="button-space"></span>
+        <button mat-raised-button color="accent" routerLink="/register">Register</button>
+      </div>
+    </div>
+  </body>
+</html>
+
