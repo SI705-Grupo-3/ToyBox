@@ -18,6 +18,7 @@ export class ShopingCartComponent {
   ngOnInit(): void {
     this.productService.list().subscribe(data =>
       this.dataSource.data=data);
+      console.log(this.dataSource);  
   }
   getTotalCost() {
     return this.dataSource.data.map(t => t.price).reduce((acc, value) => acc + value, 0);
