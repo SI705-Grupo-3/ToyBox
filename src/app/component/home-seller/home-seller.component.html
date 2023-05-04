@@ -1,15 +1,6 @@
 <router-outlet></router-outlet>
 <body [hidden]="route.children.length != 0">
   <div class="container">
-    <div class="header">
-      <button class="btn-user" mat-button>
-        <img
-          class="user"
-          src="../../../assets/img/user.png"
-          alt="Imagen del usuario"
-        />
-      </button>
-    </div>
     <div class="product-tittle">
       <h1>Mi Tienda</h1>
     </div>
@@ -26,14 +17,16 @@
           <mat-card-title>{{ product.name }}</mat-card-title>
           <mat-card-subtitle>Precio ${{ product.price }}</mat-card-subtitle>
         </mat-card-header>
+        <p style="color: red">{{errorMessage}}</p>
         <mat-card-actions>
           <!-- Agregar botón de editar -->
-          <button mat-icon-button color="primary" aria-label="Editar">
-            <mat-icon>edit</mat-icon>
+          <button mat-raised-button color="primary" aria-label="Editar">
+            <span class="material-icons">edit</span>
           </button>
+          <span class="button-space"></span>
           <!-- Agregar botón de eliminar -->
-          <button mat-icon-button color="warn" aria-label="Eliminar">
-            <mat-icon>delete</mat-icon>
+          <button mat-raised-button color="warn"  (click)="openDialog(product.id)" aria-label="Eliminar">
+            <span class="material-icons">delete</span>
           </button>
         </mat-card-actions>
       </mat-card>
@@ -43,7 +36,7 @@
         <button mat-raised-button color="basic" routerLink="/home">Volver</button>
       </div>
       <div class="nuevo">
-        <button mat-raised-button color="primary" routerLink="/home">Nuevo</button>
+        <button mat-raised-button color="primary" routerLink="/register-product">Nuevo</button>
       </div>
     </div>
   </div>

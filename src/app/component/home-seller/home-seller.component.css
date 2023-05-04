@@ -72,13 +72,13 @@ mat-card-header{
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  height: 10rem;
+  height: 10.5rem;
 }
-.product-name {
+mat-card-title {
   display: block;
   margin-top: 10px;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
 }
 .options{
@@ -105,4 +105,7 @@ mat-card-header{
 
 .back button{
   background-color: #ffffff;
+}
+.button-space {
+  margin: 0 0.2rem;
 }

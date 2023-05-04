@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <mat-nav-list>
+    <mat-toolbar-row>
+      <div class="btn">
+        <button class="btn-img" mat-button>
+          <img
+            src="assets/img/LOGO.png"
+            alt="Logo ToyBox"
+            [routerLink]="'/home'"
+            style="width: 150px; height: 60px"
+          />
+        </button>
+      </div>
+      <span class="example-spacer"></span>
+      <button mat-raised-button [routerLink]="'/home'">Inicio</button>
+      <button mat-raised-button [routerLink]="'/home-buyer'">Catalogo</button>
+      <button mat-raised-button [routerLink]="'/faq'">FAQ'S</button>
+      <button mat-raised-button [routerLink]="'/footer'">Contacto</button>
+      <div class="btn">
+        <button class="btn-img" mat-button>
+          <img
+            class="user"
+            src="assets/img/user.png"
+            alt="Logo ToyBox"
+            mat-raised-button
+            [routerLink]="'/login'"
+            style="width: 40px; height: 40px"
+          />
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-nav-list>
+</mat-toolbar>

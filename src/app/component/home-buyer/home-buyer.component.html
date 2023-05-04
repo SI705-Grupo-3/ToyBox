@@ -2,15 +2,8 @@
 <body [hidden]="route.children.length != 0">
   <div class="container">
     <div class="header">
-      <button mat-icon-button>
+      <button mat-icon-button [routerLink]="'/shoping-cart'">
         <mat-icon>shopping_cart</mat-icon>
-      </button>
-      <button class="btn-user" mat-button>
-        <img
-          class="user"
-          src="../../../assets/img/user.png"
-          alt="Imagen del usuario"
-        />
       </button>
     </div>
     <div class="category-tittle">

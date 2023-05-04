@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+
+  mat-card {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #5cc1fb;
+    border-radius: 5px;
+    text-align: center;
+    border-color: #324a58;
+    border-width: 1px;
+  }
+
+  table {
+    width: 100%;
+    text-align-last:auto;
+  }

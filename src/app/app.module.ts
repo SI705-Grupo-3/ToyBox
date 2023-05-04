@@ -34,6 +34,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BuyerCatalogComponent } from './component/buyer-catalog/buyer-catalog.component';
+import { BuyerProfileComponent } from './component/buyer-profile/buyer-profile.component';
+import { FaqComponent } from './component/faq/faq.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { MyPurchasesComponent } from './component/my-purchases/my-purchases.component';
+import { MySalesComponent } from './component/my-sales/my-sales.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { RegisterProductComponent } from './component/register-product/register-product.component';
+import { SellerCatalogComponent } from './component/seller-catalog/seller-catalog.component';
+import { SellerProfileComponent } from './component/seller-profile/seller-profile.component';
+import { ShopingCartComponent } from './component/shoping-cart/shoping-cart.component';
+import { NavbarSellerComponent } from './component/navbar-seller/navbar-seller.component';
+import { DialogComponent } from './component/home-seller/dialog/dialog.component';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -46,7 +61,21 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeBuyerComponent,
     HomeSellerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BuyerCatalogComponent,
+    BuyerProfileComponent,
+    FaqComponent,
+    FooterComponent,
+    MyPurchasesComponent,
+    MySalesComponent,
+    NavbarComponent,
+    RegisterProductComponent,
+    SellerCatalogComponent,
+    SellerProfileComponent,
+    ShopingCartComponent,
+    NavbarSellerComponent,
+    DialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -72,7 +101,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
