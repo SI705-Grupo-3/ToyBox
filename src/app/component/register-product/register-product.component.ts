@@ -32,7 +32,7 @@ export class RegisterProductComponent {
       category_id: new FormControl('', [Validators.required]),
     });
     this.categoryService.list().subscribe(data=>this.dataSource.data=data);
-    console.log(this.dataSource);  
+    console.log(this.dataSource.data);  
   }
   register(): void {
 

@@ -4,6 +4,8 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-home-seller',
@@ -12,16 +14,20 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomeSellerComponent implements OnInit {
   lista: Product[] = [];
+
+
   errorMessage: string;
   constructor(
     private productService: ProductService,
     private router: Router,
     public route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService:UserService,
+    
   ) {}
   ngOnInit(): void {
-    this.productService.list().subscribe((data) => (this.lista = data));
     this.errorMessage="";
+    
   }
   openDialog(id: number) {
     const dialogRef = this.dialog.open(DialogComponent);

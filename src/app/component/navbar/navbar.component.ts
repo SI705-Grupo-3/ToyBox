@@ -23,6 +23,5 @@ export class NavbarComponent {
   
 }
 ngOnInit(): void {
-  console.log(this.currentUser.type);
 }
 }

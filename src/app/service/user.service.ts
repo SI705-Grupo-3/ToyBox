@@ -12,18 +12,15 @@ const baseUrl = environment.base;
 })
 export class UserService {
   private url = `${baseUrl}/users`;//alt+96
-
+   
   currentUser: any;//variable para almacenar usuario 
+  idfalso:number;//
   userChanged: Subject<any> = new Subject<any>();
-  setCurrentUser(user: any) {
-    this.currentUser = user;
-    this.userChanged.next(user);
-    console.log(this.currentUser);
-  }//metodo obtener usuario
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<User[]>(this.url); //http://localhost:5000/users
+    return this.http.get<User[]>(this.url);
+    this.currentUser //http://localhost:5000/users
   }
 
   register(user : User){
@@ -52,11 +49,19 @@ export class UserService {
     );
   }
 
+   getId(username: string, password: string): Observable<number> {
+    return this.http.get<User[]>(this.url).pipe(
+      map(users => {
+        const user = users.find(user => user.username === username && user.password === password);
+        return user ? user.id : 0;
+      })
+    );
+  } 
+
+
   
-  getUserByUsernameAndRegister(username: string, register: string): Observable<User> {
-    const params = new HttpParams().set('username', username).set('register', register);
-    return this.http.get<User>(`${this.url}/users`, { params });
-  }
+
+
   
 
   
