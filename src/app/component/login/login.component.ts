@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit{
           this.userService.getType(this.user.username, this.user.password).subscribe(type => {
             const userType = type.toLowerCase();
             if(userType === "cliente"){
-              this.router.navigate(['/buyer-profile']);
+              this.router.navigate(['/home-buyer']);
             }else{
               this.router.navigate(['/home-seller']); 
             }
