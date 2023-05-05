@@ -118,7 +118,7 @@ module.exports = function(){
         last_name: "C",
         email: "joc2@hotmail.com",
         phone: 901234967,
-        username: "joc",
+        username: "joc2",
         password: "321",
       }
     ],
