@@ -36,6 +36,7 @@ mat-toolbar {
   background-color: #3487e1;
   height: auto;
   justify-content: center;
+  
 }
 .mat-mdc-button-touch-target {
   display: flex;

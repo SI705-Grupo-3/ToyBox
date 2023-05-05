@@ -49,6 +49,8 @@ import { NavbarSellerComponent } from './component/navbar-seller/navbar-seller.c
 import { DialogComponent } from './component/home-seller/dialog/dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -103,7 +105,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatExpansionModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

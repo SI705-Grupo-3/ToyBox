@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
+import { Subject } from 'rxjs';
 
 const baseUrl = environment.base;
 
@@ -11,6 +12,14 @@ const baseUrl = environment.base;
 })
 export class UserService {
   private url = `${baseUrl}/users`;//alt+96
+
+  currentUser: any;//variable para almacenar usuario 
+  userChanged: Subject<any> = new Subject<any>();
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+    this.userChanged.next(user);
+    console.log(this.currentUser);
+  }//metodo obtener usuario
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
@@ -43,4 +52,12 @@ export class UserService {
     );
   }
 
+  
+  getUserByUsernameAndRegister(username: string, register: string): Observable<User> {
+    const params = new HttpParams().set('username', username).set('register', register);
+    return this.http.get<User>(`${this.url}/users`, { params });
+  }
+  
+
+  
 }

@@ -1,1 +1,48 @@
-<p>buyer-profile works!</p>
+<div class="container">
+    <mat-card class="profile_menu">
+        <br>
+         <button mat-raised-button [routerLink]= "'/buyer-profile'">Detalle de la cuenta</button>
+         <button mat-raised-button [routerLink]= "'/my-purchases'">Mis pedidos</button>
+         <button mat-raised-button [routerLink]="'/home'">Cerrar sesion</button>
+         <br>
+    </mat-card>
+    <mat-card class="card1">
+    <h1 style="text-align: center;">Perfil del comprador</h1>
+    <table class="comprador-table">
+      <tr>
+        <th>id</th>
+        <td>{{comprador.id}}</td>
+      </tr>
+      <tr>
+        <th>type</th>
+        <td>{{comprador.type}}</td>
+      </tr>
+      <tr>
+        <th>name</th>
+        <td>{{comprador.name}}</td>
+      </tr>
+      <tr>
+        <th>Lastname</th>
+        <td>{{comprador.last_name}}</td>
+      </tr>
+      <tr>
+        <th>email</th>
+        <td>{{comprador.email}}</td>
+      </tr>
+      <tr>
+        <th>phone</th>
+        <td>{{comprador.phone}}</td>
+      </tr>
+      <tr>
+        <th>username</th>
+        <td>{{comprador.username}}</td>
+      </tr>
+      <tr>
+        <th>password</th>
+        <td>{{comprador.password}}</td>
+      </tr>
+    </table>
+</mat-card>
+  </div>
+  
+  

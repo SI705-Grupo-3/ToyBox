@@ -1,1 +1,48 @@
-<p>seller-profile works!</p>
+<div class="container">
+    <mat-card class="profile_menu">
+        <br>
+         <button mat-raised-button [routerLink]= "'/seller-profile'">Detalle de la cuenta</button>
+         <button mat-raised-button [routerLink]= "'/my-sales'">Mis ventas</button>
+         <button mat-raised-button [routerLink]="'/home'">Cerrar sesion</button>
+         <br>
+    </mat-card>
+    <mat-card class="card1">
+    <h1 style="text-align: center;">Perfil del vendedor</h1>
+    <table class="comprador-table">
+      <tr>
+        <th>id</th>
+        <td>{{vendedor.id}}</td>
+      </tr>
+      <tr>
+        <th>type</th>
+        <td>{{vendedor.type}}</td>
+      </tr>
+      <tr>
+        <th>name</th>
+        <td>{{vendedor.name}}</td>
+      </tr>
+      <tr>
+        <th>Lastname</th>
+        <td>{{vendedor.last_name}}</td>
+      </tr>
+      <tr>
+        <th>email</th>
+        <td>{{vendedor.email}}</td>
+      </tr>
+      <tr>
+        <th>phone</th>
+        <td>{{vendedor.phone}}</td>
+      </tr>
+      <tr>
+        <th>username</th>
+        <td>{{vendedor.username}}</td>
+      </tr>
+      <tr>
+        <th>password</th>
+        <td>{{vendedor.password}}</td>
+      </tr>
+    </table>
+</mat-card>
+  </div>
+  
+  
