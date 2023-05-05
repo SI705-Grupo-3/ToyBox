@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/service/user.service';
 
 
 
@@ -8,19 +10,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./buyer-profile.component.css']
 })
 export class BuyerProfileComponent {
-  comprador ={
 
-    id: 1,
-    type: "cliente",
-    name: "Juan",
-    last_name: "Gomez",
-    email: "juangomez@gmail.com",
-    phone: "956789018",
-    username: "jgomez1234",
-    password: "juan@%4321",
+  public data:User;
   
-  }
+  
 
+
+  constructor(private userService: UserService) {
+    
+  };
+  
+  ngOnInit() {
+    
+      this.userService.getUser().subscribe((message:any) => {
+      this.data = message;
+      console.log(message); 
+      console.log(this.data);
+    }
+    ); 
+
+  }
+  
 }
 
 

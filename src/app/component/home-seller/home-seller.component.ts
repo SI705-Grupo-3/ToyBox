@@ -27,6 +27,7 @@ export class HomeSellerComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.errorMessage="";
+    this.productService.list().subscribe((data) => (this.lista = data));
     
   }
   openDialog(id: number) {

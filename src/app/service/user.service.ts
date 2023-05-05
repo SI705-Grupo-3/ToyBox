@@ -12,7 +12,24 @@ const baseUrl = environment.base;
 })
 export class UserService {
   private url = `${baseUrl}/users`;//alt+96
-   
+  //-------------------------
+  subject= new Subject();
+
+  
+
+  sendUser(my_object:User) {
+    this.subject.next(my_object);
+  }
+
+  getUser() {
+    
+    return this.subject.asObservable()
+    
+  }
+
+
+
+  //----------------------------
   currentUser: any;//variable para almacenar usuario 
   idfalso:number;//
   userChanged: Subject<any> = new Subject<any>();
