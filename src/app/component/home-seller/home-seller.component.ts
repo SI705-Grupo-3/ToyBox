@@ -14,8 +14,6 @@ import { User } from 'src/app/model/user';
 })
 export class HomeSellerComponent implements OnInit {
   lista: Product[] = [];
-
-
   errorMessage: string;
   constructor(
     private productService: ProductService,
@@ -23,12 +21,14 @@ export class HomeSellerComponent implements OnInit {
     public route: ActivatedRoute,
     private dialog: MatDialog,
     private userService:UserService,
-    
+
   ) {}
   ngOnInit(): void {
     this.errorMessage="";
-    
+    this.productService.list().subscribe(data =>
+      this.lista = data);
   }
+
   openDialog(id: number) {
     const dialogRef = this.dialog.open(DialogComponent);
     dialogRef.afterClosed().subscribe((result) => {

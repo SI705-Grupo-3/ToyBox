@@ -1,4 +1,4 @@
-  <mat-toolbar>
+<mat-toolbar>
   <mat-nav-list>
     <mat-toolbar-row>
       <div class="btn">
@@ -12,12 +12,14 @@
         </button>
       </div>
       <span class="example-spacer"></span>
-      <button mat-raised-button [routerLink]="'/home-buyer'">Inicio</button>
-      <button mat-raised-button [routerLink]="'/buyer-catalog'">Catalogo</button>
+      <button mat-raised-button [routerLink]="'/home'">Inicio</button>
+      <button mat-raised-button [routerLink]="'/buyer-catalog'">
+        Catalogo
+      </button>
       <button mat-raised-button [routerLink]="'/faq'">FAQ'S</button>
 
       <!-- *ngIf="currentUser && currentUser.type === 'vendedor'" , va dentro del div-->
-      <div  class="btn" >
+      <div class="btn">
         <button class="btn-img" mat-button>
           <img
             class="user"
@@ -32,4 +34,3 @@
     </mat-toolbar-row>
   </mat-nav-list>
 </mat-toolbar>
-

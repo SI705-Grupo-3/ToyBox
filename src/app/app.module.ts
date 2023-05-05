@@ -107,7 +107,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatButtonToggleModule,
     MatExpansionModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
