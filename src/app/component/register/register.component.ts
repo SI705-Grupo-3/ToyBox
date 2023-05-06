@@ -42,9 +42,18 @@ export class RegisterComponent {
     this.user.username = this.form.value['username'];
     this.user.password = this.form.value['password'];
     if (this.form.valid) {
-      this.userService
-        .register(this.user)
-        .subscribe((data) => this.router.navigate(['users']));
+      this.userService.register(this.user).subscribe((data) => {
+        this.router.navigate(['users']);
+        this.userService
+          .getId(this.user.username, this.user.password)
+          .subscribe((id4) =>
+            this.userService.listId(id4).subscribe((user5) => {
+              this.userService.sendUser(user5);
+              console.log(user5);
+              localStorage.setItem('usuario', JSON.stringify(user5));
+            })
+          );
+      });
       if(this.form.value['type'].toLowerCase()=="cliente"){ //inicio comprador o vendedor
         this.router.navigate(['/home-buyer']);
       }else{

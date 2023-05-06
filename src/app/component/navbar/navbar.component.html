@@ -12,15 +12,15 @@
         </button>
       </div>
       <span class="example-spacer"></span>
-      <button mat-raised-button *ngIf="usuariotipo === 'cliente'" [routerLink]="'/home-buyer'">Inicio</button>
-      <button mat-raised-button *ngIf="usuariotipo === 'vendedor'" [routerLink]="'/home-seller'">Inicio</button>
-      <button mat-raised-button *ngIf="usuariotipo === 'cliente'" [routerLink]="'/buyer-catalog'">Catalogo</button>
-      <button mat-raised-button *ngIf="usuariotipo === 'vendedor'" [routerLink]="'/seller-catalog'">Catalogo</button>   
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'cliente'" [routerLink]="'/home-buyer'">Inicio</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'" [routerLink]="'/home-seller'">Inicio</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'cliente'" [routerLink]="'/buyer-catalog'">Catalogo</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'" [routerLink]="'/seller-catalog'">Catalogo</button>
       <button mat-raised-button [routerLink]="'/faq'">FAQ'S</button>
 
       <!-- *ngIf="currentUser && currentUser.type === 'vendedor'" , va dentro del div-->
       <div class="btn">
-        <button class="btn-img" mat-button *ngIf="usuariotipo === 'vendedor'">
+        <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'">
           <img
             class="user"
             src="assets/img/user.png"
@@ -30,7 +30,7 @@
             style="width: 40px; height: 40px"
           />
         </button>
-        <button class="btn-img" mat-button *ngIf="usuariotipo === 'cliente'">
+        <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'cliente'">
           <img
             class="user"
             src="assets/img/user.png"
@@ -40,8 +40,8 @@
             style="width: 40px; height: 40px"
           />
         </button>
-      
-        
+
+
       </div>
     </mat-toolbar-row>
   </mat-nav-list>
