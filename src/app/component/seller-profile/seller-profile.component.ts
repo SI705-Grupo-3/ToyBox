@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-seller-profile',
@@ -7,18 +9,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./seller-profile.component.css']
 })
 export class SellerProfileComponent {
-  constructor(public route:ActivatedRoute) { }
-  vendedor={
+  public vendedor:User;
+  constructor(public route:ActivatedRoute,private userService: UserService) { }
 
-    id: 2,
-    type: "vendedor",
-    name: "Joaquín",
-    last_name: "Pérez",
-    email: "j.perez23456789@gmail.com",
-    phone: "956789012",
-    username: "jperez2",
-    password: "j.perez23*",
+  ngOnInit() {
+    
 
-  }
+    const storedUser = localStorage.getItem('usuario');
+    if (storedUser) {
+      this.vendedor = JSON.parse(storedUser);
+    }
+    console.log(this.vendedor);
+
+
+}
+
 
 }

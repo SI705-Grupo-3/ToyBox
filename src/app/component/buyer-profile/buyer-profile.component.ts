@@ -11,7 +11,10 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class BuyerProfileComponent {
 
-  public data:User;
+
+  public user:User;
+  
+
   
   
 
@@ -22,14 +25,17 @@ export class BuyerProfileComponent {
   
   ngOnInit() {
     
-      this.userService.getUser().subscribe((message:any) => {
-      this.data = message;
-      console.log(message); 
-      console.log(this.data);
-    }
-    ); 
+
+      const storedUser = localStorage.getItem('usuario');
+      if (storedUser) {
+        this.user = JSON.parse(storedUser);
+      }
+      console.log(this.user);
+
 
   }
+    
+
   
 }
 
