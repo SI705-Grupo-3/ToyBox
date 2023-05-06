@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
   background-color: #53afe5;
   margin: 0;
   padding: 0;
-  height:inherit;
+  height: inherit;
 }
 .container {
   display: flex;
@@ -12,7 +13,6 @@ html, body {
   background-color: #53afe5;
   justify-content: space-around;
   padding-top: 1rem;
-
 }
 
 mat-card {
@@ -28,17 +28,21 @@ mat-card {
 }
 .profile_menu {
   width: 15%;
-  background-color: #007BFF;
+  background-color: #007bff;
   padding: 10px;
   margin: 60px;
   height: 30vh;
   position: relative;
 }
-.card1{
+.card1 {
   width: 45%;
-  background-color: #007BFF;
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-button{
+button {
   margin: 0px 40px;
   background-color: #007bff;
   --mdc-protected-button-container-color: #07417e;
@@ -46,4 +50,3 @@ button{
 .mat-raised-button {
   height: 50px; /* Cambiar la altura a 50px */
 }
-
