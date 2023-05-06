@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit{
       password: new FormControl('',[Validators.required])
     });
     this.errorMessage="";
-    
-    
+
+
   }
   login(): void{
     this.user.username = this.form.value['username'];
@@ -42,16 +42,16 @@ export class LoginComponent implements OnInit{
           this.userService.getId(this.user.username, this.user.password).subscribe(id4 => this.userService.listId(id4).subscribe(user5 =>{this.userService.sendUser(user5);console.log(user5);localStorage.setItem("usuario",JSON.stringify(user5))}));
           //-------------
 
-          
+
 
           //-------------
           this.userService.getType(this.user.username, this.user.password).subscribe(type => {
             const userType = type.toLowerCase();
             if(userType === "cliente"){
-              this.router.navigate(['/home-buyer']);
-              
+              this.router.navigate(['/home-buyer']).finally(()=>window.location.reload());
+
             }else{
-              this.router.navigate(['/home-seller']); 
+              this.router.navigate(['/home-seller']).finally(()=>window.location.reload());
             }
           });
         }else{
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit{
       this.errorMessage="Complete correctamente los campos."
     }
     /* this.userService.getUserByUsernameAndRegister(this.user.username, this.user.password).subscribe(id4 => {this.idg = id4; console.log(id4)}); */
-    
+
     // this.userService.listId(this.userService.idg).subscribe(user5 =>{this.user2=user5});
 
 }

@@ -15,7 +15,7 @@ export class SellerProfileComponent {
   constructor(public route:ActivatedRoute,private userService: UserService,private router: Router,private location: Location) { }
 
   ngOnInit() {
-    
+
 
     const storedUser = localStorage.getItem('usuario');
     if (storedUser) {
@@ -27,11 +27,6 @@ export class SellerProfileComponent {
 }
 logout(): void {
   localStorage.removeItem('usuario');
-  window.location.reload();
-  this.router.navigate(['/home']);
-
-  
+  this.router.navigate(['/home']).finally(()=>window.location.reload());
 }
-
-
 }

@@ -18,18 +18,18 @@ export class BuyerProfileComponent {
 
 
   public user:User;
-  
 
-  
-  
+
+
+
 
 
   constructor(private userService: UserService,private router: Router,private location: Location) {
-    
+
   };
-  
+
   ngOnInit() {
-    
+
 
       const storedUser = localStorage.getItem('usuario');
       if (storedUser) {
@@ -41,16 +41,8 @@ export class BuyerProfileComponent {
   }
   logout(): void {
     localStorage.removeItem('usuario');
-    this.router.navigate(['/home']);
-    this.location.go(this.location.path());
-    (window as any).location.reload();
-
-    
+    this.router.navigate(['/home']).finally(()=>window.location.reload());
   }
-  
-    
-
-  
 }
 
 
