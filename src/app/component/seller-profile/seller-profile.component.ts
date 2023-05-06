@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-seller-profile',
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class SellerProfileComponent {
   public vendedor:User;
-  constructor(public route:ActivatedRoute,private userService: UserService) { }
+  constructor(public route:ActivatedRoute,private userService: UserService,private router: Router,private location: Location) { }
 
   ngOnInit() {
     
@@ -22,6 +24,13 @@ export class SellerProfileComponent {
     console.log(this.vendedor);
 
 
+}
+logout(): void {
+  localStorage.removeItem('usuario');
+  window.location.reload();
+  this.router.navigate(['/home']);
+
+  
 }
 
 

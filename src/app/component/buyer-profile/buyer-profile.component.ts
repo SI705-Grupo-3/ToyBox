@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+
+
 
 
 
@@ -19,7 +24,7 @@ export class BuyerProfileComponent {
   
 
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,private router: Router,private location: Location) {
     
   };
   
@@ -34,6 +39,15 @@ export class BuyerProfileComponent {
 
 
   }
+  logout(): void {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/home']);
+    this.location.go(this.location.path());
+    (window as any).location.reload();
+
+    
+  }
+  
     
 
   

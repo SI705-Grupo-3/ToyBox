@@ -45,7 +45,6 @@ import { RegisterProductComponent } from './component/register-product/register-
 import { SellerCatalogComponent } from './component/seller-catalog/seller-catalog.component';
 import { SellerProfileComponent } from './component/seller-profile/seller-profile.component';
 import { ShopingCartComponent } from './component/shoping-cart/shoping-cart.component';
-import { NavbarSellerComponent } from './component/navbar-seller/navbar-seller.component';
 import { DialogComponent } from './component/home-seller/dialog/dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -75,7 +74,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     SellerCatalogComponent,
     SellerProfileComponent,
     ShopingCartComponent,
-    NavbarSellerComponent,
     DialogComponent
 
   ],

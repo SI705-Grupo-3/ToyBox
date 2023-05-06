@@ -1,0 +1,64 @@
+<router-outlet></router-outlet>
+<body [hidden]="route.children.length != 0">
+  <div class="container">
+    <div class="product-title">
+      <h1>Catálogo de Productos</h1>
+    </div>
+    <div class="cards">
+      <div class="header">
+        <mat-card>
+          <div class="filters" style="display: flex; flex-direction: column">
+            <mat-form-field>
+              <mat-label>Categoría</mat-label>
+              <mat-select placeholder="Seleccione una categoría">
+                <mat-option
+                  *ngFor="let category of dataSource.data"
+                  [value]="category.id"
+                >
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Precio</mat-label>
+              <input matInput (keyup)="applyFilters()" type="text" />
+              <mat-hint> Enter price to filter items. </mat-hint>
+            </mat-form-field>
+            <button mat-raised-button (click)="applyFilters()" color="primary">
+              Filtrar
+            </button>
+          </div>
+        </mat-card>
+      </div>
+      <div class="product-container">
+        <mat-card *ngFor="let product of lista" clickable>
+          <mat-card-header>
+            <div class="product-img" mat-card-avatar>
+              <img
+                [src]="'../../../assets/img/producto' + product.id + '.png'"
+                alt="{{ product.name }}"
+                style="height: 100px; width: 100px"
+              />
+            </div>
+            <mat-card-title>{{ product.name }}</mat-card-title>
+            <mat-card-subtitle>Precio ${{ product.price }}</mat-card-subtitle>
+          </mat-card-header>
+          <p style="color: red">{{ errorMessage }}</p>
+          <mat-card-actions>
+            <!-- Agregar botón de Agregar -->
+            <button mat-raised-button color="accent" aria-label="Agregar">
+              <span class="material-icons">add</span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <div class="options">
+      <div class="back">
+        <button mat-raised-button color="basic" routerLink="/home">
+          Volver
+        </button>
+      </div>
+    </div>
+  </div>
+</body>

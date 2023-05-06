@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit{
             const userType = type.toLowerCase();
             if(userType === "cliente"){
               this.router.navigate(['/home-buyer']);
+              
             }else{
               this.router.navigate(['/home-seller']); 
             }
@@ -57,7 +58,9 @@ export class LoginComponent implements OnInit{
           this.errorMessage = "Usuario o contraseña incorrecta.";
           this.form.reset();
         }
-      });
+
+      }
+      );
     }else{
       this.errorMessage="Complete correctamente los campos."
     }

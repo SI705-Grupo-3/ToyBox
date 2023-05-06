@@ -3,7 +3,8 @@
         <br>
          <button mat-raised-button [routerLink]= "'/buyer-profile'">Detalle de la cuenta</button>
          <button mat-raised-button [routerLink]= "'/my-purchases'">Mis pedidos</button>
-         <button mat-raised-button [routerLink]="'/home'">Cerrar sesion</button>
+         <button mat-raised-button (click)="logout()">Cerrar sesión</button>
+
          <br>
     </mat-card>
     <mat-card class="card1">

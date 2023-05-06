@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, ViewChild , Inject} from '@angular/core';
+import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  public usuariotipo:string="";
+  public user:User;
   @ViewChild('footer') footer: ElementRef | null = null;
   scrollToFooter() {
     if (this.footer) {
@@ -23,5 +26,12 @@ export class NavbarComponent {
   
 }
 ngOnInit(): void {
+
+  const storedUser = localStorage.getItem('usuario');
+  if (storedUser) {
+    this.user = JSON.parse(storedUser);
+    this.usuariotipo = this.user.type;
+    console.log(this.usuariotipo);
+  }
 }
 }
