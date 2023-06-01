@@ -49,7 +49,7 @@ import { DialogComponent } from './component/home-seller/dialog/dialog.component
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FlexLayoutModule } from '@angular/flex-layout';
+//import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -107,7 +107,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatListModule,
     MatButtonToggleModule,
     MatExpansionModule,
-    FlexLayoutModule
+    //FlexLayoutModule
 
   ],
   providers: [],

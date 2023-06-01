@@ -49,7 +49,9 @@ const routes: Routes = [
     path: 'my-sales', component: MySalesComponent
   },
   {
-    path: 'register-product', component: RegisterProductComponent
+    path: 'register-product', component: RegisterProductComponent, children: [
+      { path: 'edit/:id', component: RegisterProductComponent}
+    ]
   },
   {
     path: 'seller-catalog', component: SellerCatalogComponent

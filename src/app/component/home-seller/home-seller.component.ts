@@ -26,7 +26,7 @@ export class HomeSellerComponent implements OnInit {
   ngOnInit(): void {
     this.errorMessage="";
     this.productService.list().subscribe((data) => (this.lista = data));
-    
+
   }
 
   openDialog(id: number) {
@@ -40,7 +40,7 @@ export class HomeSellerComponent implements OnInit {
   }
   delete(id: number) {
     this.productService.delete(id).subscribe(() =>
-      this.router.navigate(['products']).then(() => {
+      this.router.navigate(['products']).finally(() => {
         window.location.reload();
       }),
     );

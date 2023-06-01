@@ -20,7 +20,7 @@
         <p style="color: red">{{errorMessage}}</p>
         <mat-card-actions>
           <!-- Agregar botón de editar -->
-          <button mat-raised-button color="primary" aria-label="Editar">
+          <button mat-raised-button color="primary" aria-label="Editar" [routerLink]="['/register-product/edit',product.id]">
             <span class="material-icons">edit</span>
           </button>
           <span class="button-space"></span>
