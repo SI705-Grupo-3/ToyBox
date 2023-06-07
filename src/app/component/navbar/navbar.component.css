@@ -1,3 +1,9 @@
+mat-toolbar {
+  background-color: #3487e1;
+  height: auto;
+  justify-content: center;
+
+}
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -10,58 +16,21 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  align-self: center;
 }
 .btn-img {
   height: auto;
   width: auto;
   display: flex;
-  background: #3487e1;
+  background: #3488e1e9;
   justify-content: center;
   align-items: center;
-  align-self: center;
-  justify-self: center;
-  justify-items: center;
 }
-image {
+img {
   display: flex;
   justify-content: center;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-mat-toolbar {
-  background-color: #3487e1;
-  height: auto;
-  justify-content: center;
-  
-}
-.mat-mdc-button-touch-target {
-  display: flex;
   align-items: center;
-  justify-content: center;
 }
-.mdc-button__label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .mat-mdc-raised-button.mat-unthemed {
   --mdc-protected-button-container-color: #02356b;
   color: #ffffff;
-}
-mat-nav-list {
-  display: flex;
-  flex-wrap: wrap;
-  height: auto;
-}
-mat-toolbar-row{
-  display: flex;
-  flex-wrap: wrap;
-  height: auto;
-  padding: 0;
-
 }

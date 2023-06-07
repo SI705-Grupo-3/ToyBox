@@ -1,17 +1,17 @@
-
-.container {
-  height: 100%;
+body{
   background-image: url('../../../assets/img/home.png');
   opacity: 0.98;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+.container {
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  background-repeat: no-repeat;
   color: rgb(255, 255, 255);
+  justify-content: center;
 }
 h1{
   padding-bottom: 2rem;
@@ -20,11 +20,13 @@ h1{
   margin: 0;
   font-weight: 700;
   font-size: 4rem;
+  line-height: 4.5rem;
 }
 
 .description {
   font-size: 1rem;
   margin: 1rem 0;
+  line-height: 1rem;
 }
 
 .buttons {

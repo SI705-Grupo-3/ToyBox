@@ -1,15 +1,11 @@
-footer{
+/*footer{
 	background: #007BFF;
 	height: auto;
 	width: auto;
 	font-family: "calibri";
 	padding-top: 4px;
 	color: #111;
-    /* position: absolute;
-    bottom: 0;
-    width: 100%; */
 	scroll-behavior: smooth;
-
 }
 .footer-content{
 	display: flex;
@@ -45,4 +41,74 @@ footer{
 .footer-bottom span{
 	text-transform: uppercase;
 	opacity: .4;
+}*/
+
+footer {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+
+}
+
+.footer-contact {
+  margin-bottom: 1.2rem;
+}
+
+.footer-subtitle {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-info-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  background-color: #07417e;
+  padding: 0.5rem;
+}
+
+.footer-info-item i {
+  margin-right: 5px;
+
+}
+
+.footer-info-label {
+  font-weight:200;
+  margin-right: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+
+}
+
+.footer-bottom-text {
+  font-size: 16px;
+  margin-top: 0.2rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.footer-bottom span {
+  color: red; /* Ajusta el color de los iconos según sea necesario */
+}
+
+.footer-bottom span i {
+  margin: 0 5px;
 }
