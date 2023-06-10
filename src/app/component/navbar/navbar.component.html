@@ -1,0 +1,46 @@
+<mat-toolbar>
+  <mat-nav-list>
+    <mat-toolbar-row>
+      <div class="btn">
+        <button class="btn-img" mat-button>
+          <img
+            src="assets/img/LOGO.png"
+            alt="Logo ToyBox"
+            [routerLink]="'/home'"
+            style="width: 150px; height: 60px"
+          />
+        </button>
+      </div>
+      <span class="example-spacer"></span>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'cliente'" [routerLink]="'/home-buyer'">Inicio</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'" [routerLink]="'/home-seller'">Inicio</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'cliente'" [routerLink]="'/buyer-catalog'">Catalogo</button>
+      <button mat-raised-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'" [routerLink]="'/seller-catalog'">Catalogo</button>
+      <button mat-raised-button [routerLink]="'/faq'">FAQ'S</button>
+
+      <!-- *ngIf="currentUser && currentUser.type === 'vendedor'" , va dentro del div-->
+      <div class="btn">
+        <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'">
+          <img
+            class="user"
+            src="assets/img/user.png"
+            alt="Logo ToyBox"
+            mat-raised-button
+            [routerLink]="'/seller-profile'"
+            style="width: 45px; height: 45px;"
+          />
+        </button>
+        <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'cliente'">
+          <img
+            class="user"
+            src="assets/img/user.png"
+            alt="Logo ToyBox"
+            mat-raised-button
+            [routerLink]="'/buyer-profile'"
+            style="width: 45px; height: 45px"
+          />
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-nav-list>
+</mat-toolbar>

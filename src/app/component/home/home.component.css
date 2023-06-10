@@ -1,0 +1,57 @@
+body{
+  background-image: url('../../../assets/img/home.png');
+  opacity: 0.98;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+}
+h1{
+  padding-bottom: 2rem;
+}
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  margin: 1rem 0;
+  line-height: 1rem;
+}
+
+.buttons {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-space {
+  margin: 0 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 3rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .button-space {
+    margin: 1rem 0;
+  }
+}

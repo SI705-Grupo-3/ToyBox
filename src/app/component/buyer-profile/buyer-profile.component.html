@@ -1,0 +1,91 @@
+<div class="container">
+  <mat-card class="profile_menu">
+    <br>
+    <!-- Agregar botón de editar -->
+     <!--<button mat-raised-button [routerLink]= "'/buyer-profile'">Detalle de la cuenta</button> -->
+     <button mat-raised-button [routerLink]= "'/buyer-profile'"><strong><em>Detalle de la cuenta</em></strong></button>
+     <button mat-raised-button [routerLink]= "'/my-purchases'"><strong><em>Mis pedidos</em></strong></button>
+     <button mat-raised-button (click)="logout()"><strong><em>Cerrar sesión</em></strong></button>
+     <br>
+</mat-card>
+
+    <mat-card class="card1">
+    <div class="titulo">
+      <h2>Perfil del comprador</h2>
+      </div>
+      <br>
+      <mat-form-field>
+        <mat-label>Tipo de Usuario</mat-label>
+        <input matInput disabled [value]="user.type">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput disabled [value]="user.name">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput disabled [value]="user.last_name">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input matInput disabled [value]="user.email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Telefono</mat-label>
+          <input matInput disabled [value]="user.phone">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput disabled [value]="user.username">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput disabled [value]="user.password">
+        </mat-form-field>
+
+      </mat-card>
+    <!-- <mat-card class="card1">
+    <h1 style="text-align: center; font-size: 3rem; line-height: 3rem;">Perfil del comprador</h1>
+    <table class="comprador-table">
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">id</th>
+        <td style="font-size: 2rem; line-height: 2rem;" >{{user.id}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">type</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.type}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">name</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.name}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">Lastname</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.last_name}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">email</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.email}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">phone</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.phone}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">username</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.username}}</td>
+      </tr>
+      <tr>
+        <th style="font-size: 2rem; line-height: 2rem;">password</th>
+        <td style="font-size: 2rem; line-height: 2rem;">{{user.password}}</td>
+      </tr>
+    </table>
+</mat-card> -->
+  </div>
+

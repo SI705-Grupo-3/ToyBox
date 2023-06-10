@@ -1,0 +1,72 @@
+<div class="container">
+<mat-card class="profile_menu">
+    <br>
+     <button mat-raised-button [routerLink]= "'/buyer-profile'">Detalle de la cuenta</button>
+     <button mat-raised-button [routerLink]= "'/my-purchases'">Mis pedidos</button>
+     <button mat-raised-button [routerLink]="'/home'">Cerrar sesion</button>
+     <br>
+</mat-card>
+<mat-card class="card1">
+        <h1 style="text-align: center;">MIS COMPRAS</h1>
+        <div class="example-container mat-elevation-z8">
+          <mat-table #table [dataSource]="dataSource" matSort>
+      
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Id.
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Name
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                description
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.description }}
+              </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="price">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                price
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.price }}
+              </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="stock">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                stock
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.stock }}
+              </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="category_id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                category_id
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.category_id }}
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+      
+        </div>
+</mat-card>
+</div>

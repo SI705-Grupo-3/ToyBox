@@ -1,0 +1,30 @@
+<router-outlet></router-outlet>
+<body [hidden]="route.children.length != 0">
+  <div class="container">
+    <div class="header">
+      <button mat-icon-button [routerLink]="'/shoping-cart'">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+    <div class="category-tittle">
+      <h1>Categorías</h1>
+    </div>
+    <div class="category-container">
+      <mat-card *ngFor="let category of lista" clickable>
+        <mat-card-header>
+          <div class="category-img" mat-card-avatar>
+            <img
+              [src]="'../../../assets/img/categoria' + category.id + '.png'"
+              alt="{{ category.name }}"
+              style="height: 100px; width: 100px"
+            />
+          </div>
+          <mat-card-title>{{ category.name }}</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="back">
+      <button mat-raised-button color="basic" routerLink="/home">Volver</button>
+    </div>
+  </div>
+</body>

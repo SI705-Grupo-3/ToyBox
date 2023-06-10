@@ -1,0 +1,36 @@
+mat-toolbar {
+  background-color: #3487e1;
+  height: auto;
+  justify-content: center;
+
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+button {
+  margin: 0px 20px;
+  background-color: #007bff;
+  --mdc-protected-button-container-color: #07417e;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-img {
+  height: auto;
+  width: auto;
+  display: flex;
+  background: #3488e1e9;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mat-mdc-raised-button.mat-unthemed {
+  --mdc-protected-button-container-color: #02356b;
+  color: #ffffff;
+}

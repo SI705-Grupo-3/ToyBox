@@ -1,0 +1,49 @@
+html, body {
+  background-color: #53afe5;
+  margin: 0;
+  padding: 0;
+  height:inherit;
+}
+.container {
+  display: flex;
+
+  align-items: start;
+  height: 100vh;
+  background-color: #53afe5;
+  justify-content: space-around;
+  padding-top: 2rem;
+
+}
+
+mat-card {
+  max-width: 1200px;
+  width: 100%;
+  background-color: #5cc1fb;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: space-between;
+  border-color: #324a58;
+  border-width: 1px;
+  align-items: start;
+}
+.profile_menu {
+  width: 15%;
+  background-color: #007BFF;
+  padding: 10px;
+  margin: 60px;
+  height: 30vh;
+  position: relative;
+}
+.card1{
+  width: 45%;
+  background-color: #007BFF;
+}
+button{
+  margin: 0px 40px;
+  background-color: #007bff;
+  --mdc-protected-button-container-color: #07417e;
+}
+.mat-raised-button {
+  height: 50px; /* Cambiar la altura a 50px */
+}
+

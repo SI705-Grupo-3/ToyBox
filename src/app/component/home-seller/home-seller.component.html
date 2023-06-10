@@ -1,0 +1,43 @@
+<router-outlet></router-outlet>
+<body [hidden]="route.children.length != 0">
+  <div class="container">
+    <div class="product-tittle">
+      <h1>Mi Tienda</h1>
+    </div>
+    <div class="product-container">
+      <mat-card *ngFor="let product of lista" clickable>
+        <mat-card-header>
+          <div class="product-img" mat-card-avatar>
+            <img
+              [src]="'../../../assets/img/producto' + product.id + '.png'"
+              alt="{{ product.name }}"
+              style="height: 100px; width: 100px"
+            />
+          </div>
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <mat-card-subtitle>Precio ${{ product.price }}</mat-card-subtitle>
+        </mat-card-header>
+        <p style="color: red">{{errorMessage}}</p>
+        <mat-card-actions>
+          <!-- Agregar botón de editar -->
+          <button mat-raised-button color="primary" aria-label="Editar" [routerLink]="['/register-product/edit',product.id]">
+            <span class="material-icons">edit</span>
+          </button>
+          <span class="button-space"></span>
+          <!-- Agregar botón de eliminar -->
+          <button mat-raised-button color="warn"  (click)="openDialog(product.id)" aria-label="Eliminar">
+            <span class="material-icons">delete</span>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="options">
+      <div class="back">
+        <button mat-raised-button color="basic" routerLink="/home">Volver</button>
+      </div>
+      <div class="nuevo">
+        <button mat-raised-button color="primary" routerLink="/register-product">Nuevo</button>
+      </div>
+    </div>
+  </div>
+</body>

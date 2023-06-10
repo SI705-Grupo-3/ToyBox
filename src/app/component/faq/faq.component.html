@@ -1,0 +1,17 @@
+<div class="container">   
+<mat-card>
+<mat-card-header>
+        <mat-card-title class="title">PREGUNTAS FRECUENTES</mat-card-title>
+</mat-card-header>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let question of questions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ question.title }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{ question.answer }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
+</div> 
