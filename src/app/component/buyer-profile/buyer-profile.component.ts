@@ -41,6 +41,8 @@ export class BuyerProfileComponent {
   }
   logout(): void {
     localStorage.removeItem('usuario');
+    localStorage.removeItem('productocarrito'); 
+    localStorage.removeItem('productocarrito2'); 
     this.router.navigate(['/home']).finally(()=>window.location.reload());
   }
   

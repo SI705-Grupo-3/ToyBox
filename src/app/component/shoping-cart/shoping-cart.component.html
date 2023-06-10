@@ -2,6 +2,7 @@
 <mat-card>
     <h1 style="text-align: center;">Carrito de compras</h1>
 <mat-card-content>
+  <div class="table-container">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <!-- Item Column -->
     <ng-container matColumnDef="name">
@@ -22,9 +23,11 @@
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
   </table>
   <br>
-  <button mat-raised-button color="accent" type="submit">
-    Pagar
-  </button>
+</div>
+<br>
+<button mat-raised-button color="accent" type="submit">
+  Pagar
+</button>
 </mat-card-content>
 </mat-card>
 </div>

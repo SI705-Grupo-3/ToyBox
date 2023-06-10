@@ -1,6 +1,11 @@
 <router-outlet></router-outlet>
 <body [hidden]="route.children.length != 0">
   <div class="container">
+    <div class="car">
+      <button mat-icon-button (click)="irAlCarrito()" >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
     <div class="product-title">
       <h1>Catálogo de Productos</h1>
     </div>
@@ -46,7 +51,7 @@
           <p style="color: red">{{ errorMessage }}</p>
           <mat-card-actions>
             <!-- Agregar botón de Agregar -->
-            <button mat-raised-button color="accent" aria-label="Agregar">
+            <button mat-raised-button color="accent" aria-label="Agregar" (click)="enviarcarrito(product)">
               <span class="material-icons">add</span>
             </button>
           </mat-card-actions>

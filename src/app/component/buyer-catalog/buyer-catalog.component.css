@@ -17,6 +17,13 @@ html, body {
     padding-top: 2rem;
     height: auto;
   }
+  .car {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    padding-top: 2rem;
+  }
   .btn-user{
     height: 80px;
     width: 80px;

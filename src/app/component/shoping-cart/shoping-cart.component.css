@@ -4,10 +4,14 @@
     align-items: center;
     height: 100vh;
     background-color: #f2f2f2;
+    overflow-x: auto;
+    
   }
 
   mat-card {
     max-width: 1200px;
+    min-height: 950px;
+    max-height: 950px;
     width: 100%;
     background-color: #5cc1fb;
     border-radius: 5px;
@@ -16,7 +20,14 @@
     border-width: 1px;
   }
 
+
   table {
     width: 100%;
     text-align-last:auto;
+    overflow-x: auto;
   }
+  .table-container {
+    max-height: 800px; /* Ajusta este valor según tus necesidades */
+    overflow-x: auto;
+  }
+  

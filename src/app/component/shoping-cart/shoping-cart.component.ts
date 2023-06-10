@@ -16,12 +16,23 @@ export class ShopingCartComponent {
   constructor(private productService: ProductService, private router: Router){
   }
   ngOnInit(): void {
-    this.productService.list().subscribe(data =>
-      this.dataSource.data=data);
-      console.log(this.dataSource);  
+      const productocarrito = localStorage.getItem('productocarrito');
+      if (productocarrito) {
+        this.lista = JSON.parse(productocarrito);
+      }
+      this.dataSource.data = this.lista;
+      
+      localStorage.setItem('productocarrito2', JSON.stringify(this.lista));
+
+
+
   }
   getTotalCost() {
     return this.dataSource.data.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
+
+
+
+
 
 }

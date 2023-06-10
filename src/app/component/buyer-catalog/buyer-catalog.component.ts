@@ -15,6 +15,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class BuyerCatalogComponent implements OnInit{
   lista: Product[] = [];
+  carrito: Product[] = [];
   errorMessage: string;
   listaCateg: Category[] = [];
   dataSource= new MatTableDataSource<Category>();
@@ -24,12 +25,16 @@ export class BuyerCatalogComponent implements OnInit{
     public route: ActivatedRoute,
     private dialog: MatDialog,
     private userService:UserService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
   ) {}
   ngOnInit(): void {
     this.errorMessage="";
     this.productService.list().subscribe((data) => (this.lista = data));
     this.categoryService.list().subscribe(data=>this.dataSource.data=data);
+    const productocarrito = localStorage.getItem('productocarrito2');
+      if (productocarrito) {
+        this.carrito = JSON.parse(productocarrito);
+      }
   }
   delete(id: number) {
     this.productService.delete(id).subscribe(() =>
@@ -40,6 +45,19 @@ export class BuyerCatalogComponent implements OnInit{
   }
   applyFilters(){
 
+
   }
+
+  enviarcarrito(product: Product){
+
+    this.carrito.push(product);
+    localStorage.setItem('productocarrito', JSON.stringify(this.carrito));
+  }
+
+  irAlCarrito() {
+
+    this.router.navigate(['/shoping-cart']);
+  }
+
 
 }
