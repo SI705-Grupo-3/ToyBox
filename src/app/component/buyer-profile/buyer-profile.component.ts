@@ -43,6 +43,7 @@ export class BuyerProfileComponent {
     localStorage.removeItem('usuario');
     this.router.navigate(['/home']).finally(()=>window.location.reload());
   }
+  
 }
 
 
