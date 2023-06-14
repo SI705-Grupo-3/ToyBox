@@ -37,7 +37,7 @@ export class UserService {
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
     return this.http.get<User[]>(this.url);
-    this.currentUser //http://localhost:5000/users
+    this.currentUser //http://localhost:5000/api/users
   }
 
   register(user : User){
@@ -52,10 +52,15 @@ export class UserService {
   delete(id: string) {
     return this.http.delete(this.url+"/"+id);
  }
-  login(username: string, password: string): Observable<boolean>{
-    return this.http.get<User[]>(this.url).pipe(
+  login(username: string, password: string){
+    /* var user: User = new User();
+    user.username = username;
+    user.password = password; */
+     return this.http.get<User[]>(this.url).pipe(
       map(users => users.find(user => user.username === username && user.password === password) != null)
-    );
+    ); 
+    /* return this.http.post(this.url+"/login",user) */
+
   }
   getType(username: string, password: string): Observable<string> {
     return this.http.get<User[]>(this.url).pipe(
