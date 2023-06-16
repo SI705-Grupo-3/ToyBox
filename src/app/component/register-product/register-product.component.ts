@@ -13,6 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./register-product.component.css']
 })
 export class RegisterProductComponent {
+  productedit:Product = new Product();
   form: FormGroup = new FormGroup({});
   product: Product = new Product();
   dataSource= new MatTableDataSource<Category>();
@@ -20,7 +21,7 @@ export class RegisterProductComponent {
   errorMessage: string;
 
   id: number = 0;
-  edicion: boolean = false;
+  edicion: boolean = true; 
 
   constructor(
     private productService: ProductService,
@@ -30,9 +31,14 @@ export class RegisterProductComponent {
   ) {}
   ngOnInit(): void {
     this.categoryService.list().subscribe(data=>this.dataSource.data=data);
-    this.route.params.subscribe((data: Params) => {;
-      this.id = data['id']; //capturando el id del listado
-      this.edicion = data['id'] != null;
+    this.route.params.subscribe((datas: Params) => {
+      console.log(datas);
+      this.id = datas['id']; //capturando el id del listado
+      console.log(this.id);
+
+      this.edicion = datas['id'] != null; 
+      console.log(this.edicion);
+
       this.init();
     });
 
@@ -43,25 +49,29 @@ export class RegisterProductComponent {
       stock: new FormControl('', [Validators.required]),
       category_id: new FormControl('', [Validators.required]),
     });
-    console.log(this.id);
-    console.log(this.edicion);
+    
   }
 
   init() {
     if (this.edicion) {
-      this.productService.listId(this.id).subscribe((data) => {
+      console.log('editproduct');
+      const storedProduct = localStorage.getItem('editproductid');
+      if (storedProduct) {
+        this.productedit = JSON.parse(storedProduct);
+      }
         this.form = new FormGroup({
-          name: new FormControl(data.name),
-          description: new FormControl(data.description),
-          price: new FormControl(data.price),
-          stock: new FormControl(data.stock),
+          name: new FormControl(this.productedit.name),
+          description: new FormControl(this.productedit.description),
+          price: new FormControl(this.productedit.price),
+          stock: new FormControl(this.productedit.stock),
           //category_id: new FormControl(data.category_id)
         });
-      });
+      };
     }
-  }
+  
 
   register(): void {
+    
     this.product.category_id = this.form.value['category_id'];
     this.product.name = this.form.value['name'];
     this.product.description = this.form.value['description'];

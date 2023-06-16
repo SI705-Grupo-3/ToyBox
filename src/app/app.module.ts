@@ -21,7 +21,7 @@ import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HomeComponent } from './component/home/home.component';
-import { HomeBuyerComponent } from './component/home-buyer/home-buyer.component';
+import { HomeBuyerComponent } from './component/homes/home-buyer/home-buyer.component';
 import { HomeSellerComponent } from './component/home-seller/home-seller.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -34,21 +34,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BuyerCatalogComponent } from './component/buyer-catalog/buyer-catalog.component';
-import { BuyerProfileComponent } from './component/buyer-profile/buyer-profile.component';
+import { BuyerCatalogComponent } from './component/catalog/buyer-catalog/buyer-catalog.component';
+import { BuyerProfileComponent } from './component/profile/buyer-profile/buyer-profile.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MyPurchasesComponent } from './component/my-purchases/my-purchases.component';
 import { MySalesComponent } from './component/my-sales/my-sales.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { RegisterProductComponent } from './component/register-product/register-product.component';
-import { SellerCatalogComponent } from './component/seller-catalog/seller-catalog.component';
-import { SellerProfileComponent } from './component/seller-profile/seller-profile.component';
+import { SellerCatalogComponent } from './component/catalog/seller-catalog/seller-catalog.component';
+import { SellerProfileComponent } from './component/profile/seller-profile/seller-profile.component';
 import { ShopingCartComponent } from './component/shoping-cart/shoping-cart.component';
 import { DialogComponent } from './component/home-seller/dialog/dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { EditProductComponent } from './component/edit-product/edit-product.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -76,7 +77,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     SellerCatalogComponent,
     SellerProfileComponent,
     ShopingCartComponent,
-    DialogComponent
+    DialogComponent,
+    EditProductComponent
 
   ],
   imports: [

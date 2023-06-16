@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-card class="profile_menu">
+    <br>
+    <!-- Agregar botón de editar -->
+     <!--<button mat-raised-button [routerLink]= "'/buyer-profile'">Detalle de la cuenta</button> -->
+     <button mat-raised-button [routerLink]= "'/seller-profile'"><strong><em>Detalle de la cuenta</em></strong></button>
+     <button mat-raised-button [routerLink]= "'/my-sales'"><strong><em>Mis ventas</em></strong></button>
+     <button mat-raised-button (click)="logout()"><strong><em>Cerrar sesión</em></strong></button>
+     <br>
+</mat-card>
+
+    <mat-card class="card1">
+    <div class="titulo">
+      <h2>Perfil del vendedor</h2>
+      </div>
+      <br>
+      <mat-form-field>
+        <mat-label>Tipo de Usuario</mat-label>
+        <input matInput disabled [value]="user.type">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput disabled [value]="user.name">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput disabled [value]="user.last_name">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input matInput disabled [value]="user.email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Telefono</mat-label>
+          <input matInput disabled [value]="user.phone">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput disabled [value]="user.username">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput disabled [value]="user.password">
+        </mat-form-field>
+
+      </mat-card>
+  </div>
+

@@ -15,17 +15,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./buyer-profile.component.css']
 })
 export class BuyerProfileComponent {
-
-
   public user:User;
-
-
-
-
-
-
   constructor(private userService: UserService,private router: Router,private location: Location) {
-
   };
 
   ngOnInit() {

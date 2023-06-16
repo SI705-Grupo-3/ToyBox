@@ -4,22 +4,12 @@
         <mat-card-title class="title">Registrar Producto</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form  [formGroup]="form" (submit)="register()">
-          <mat-form-field appearance="fill">
-            <mat-label>Categoria</mat-label>
-            <mat-select formControlName="category_id" *ngIf="dataSource.data.length">
-                <mat-option *ngFor="let category of dataSource.data" [value]="category.id">
-                  {{ category.name }}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>
+        <form  [formGroup]="form" (submit)="editar()">
           <br>
           <mat-form-field appearance="fill">
             <mat-label>Nombre Producto</mat-label>
             <input
               matInput
-              [value]="productedit.name" 
-              placeholder="Ingresa nombre del producto"
               formControlName="name"
             >
           </mat-form-field>
@@ -28,9 +18,7 @@
             <mat-label>Descripción</mat-label>
             <input
               matInput
-              placeholder="Ingresa una descripción del producto"
-              formControlName="description"
-              [value]="productedit.description" 
+              formControlName="description" 
             >
           </mat-form-field>
           <br>
@@ -38,9 +26,7 @@
             <mat-label>Precio</mat-label>
             <input
               matInput
-              placeholder="Ingresa el precio"
               formControlName="price"
-              [value]="productedit.price" 
             />
           </mat-form-field>
           <br>
@@ -48,20 +34,18 @@
             <mat-label>Stock</mat-label>
             <input
               matInput
-              placeholder="Ingresa el stock"
               formControlName="stock"
-              [value]="productedit.stock" 
             />
           </mat-form-field>
           <p style="color: red">{{ errorMessage }}</p>
           <div class="actions">
             <button mat-raised-button color="accent" type="submit">
-              Registrar
+              Actualizar
             </button>
           </div>
         </form>
         <div class="back">
-          <button mat-raised-button color="basic" routerLink="/home-seller">
+          <button mat-raised-button color="basic" (click)="volver()" >
             Volver
           </button>
         </div>

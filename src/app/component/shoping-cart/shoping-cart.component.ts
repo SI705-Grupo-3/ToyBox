@@ -30,6 +30,10 @@ export class ShopingCartComponent {
   getTotalCost() {
     return this.dataSource.data.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
+  pagar(): void {
+  
+  
+  }
 
 
 

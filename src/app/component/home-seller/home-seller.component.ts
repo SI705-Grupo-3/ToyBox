@@ -14,6 +14,7 @@ import { User } from 'src/app/model/user';
 })
 export class HomeSellerComponent implements OnInit {
   lista: Product[] = [];
+  productselected: Product;
   errorMessage: string;
   constructor(
     private productService: ProductService,
@@ -44,5 +45,10 @@ export class HomeSellerComponent implements OnInit {
         window.location.reload();
       }),
     );
+  }
+  editar(id: number) {
+    this.productService.listId(id).subscribe((user1) =>localStorage.setItem("editproductid",JSON.stringify(user1)));
+    this.router.navigate(['/edit-product']).finally(()=>window.location.reload());
+
   }
 }

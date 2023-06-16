@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./seller-profile.component.css']
 })
 export class SellerProfileComponent {
-  public vendedor:User;
+  public user:User;
   constructor(public route:ActivatedRoute,private userService: UserService,private router: Router,private location: Location) { }
 
   ngOnInit() {
@@ -19,9 +19,9 @@ export class SellerProfileComponent {
 
     const storedUser = localStorage.getItem('usuario');
     if (storedUser) {
-      this.vendedor = JSON.parse(storedUser);
+      this.user = JSON.parse(storedUser);
     }
-    console.log(this.vendedor);
+    console.log(this.user);
 
 
 }

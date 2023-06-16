@@ -15,6 +15,7 @@ body {
   padding-top: 1rem;
 }
 
+
 mat-card {
   max-width: 1200px;
   width: 100%;
@@ -26,14 +27,18 @@ mat-card {
   border-width: 1px;
   align-items: start;
 }
-.profile_menu {
+
+ .profile_menu {
   width: 15%;
   background-color: #007bff;
   padding: 10px;
   margin: 60px;
   height: 30vh;
   position: relative;
-}
+
+  flex-direction: column;
+
+} 
 .card1 {
   width: 45%;
   background-color: #007bff;
@@ -46,7 +51,17 @@ button {
   margin: 0px 40px;
   background-color: #007bff;
   --mdc-protected-button-container-color: #07417e;
+  width: auto;
+  height: auto;
 }
 .mat-raised-button {
   height: 50px; /* Cambiar la altura a 50px */
+}
+mat-form-field {
+  align-items: center;
+  justify-content: center;
+  margin-left: 180px;
+  margin-right: 180px;
+  color: black;
+  width: 400px;
 }
