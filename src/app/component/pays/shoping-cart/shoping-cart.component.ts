@@ -10,29 +10,40 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./shoping-cart.component.css']
 })
 export class ShopingCartComponent {
+  monto: number=0;
   lista: Product[] = [];
-  displayedColumns=['name','price'];
+  displayedColumns=['name','price','quitar'];
   dataSource= new MatTableDataSource<Product>();
   constructor(private productService: ProductService, private router: Router){
   }
   ngOnInit(): void {
+    
       const productocarrito = localStorage.getItem('productocarrito');
       if (productocarrito) {
-        this.lista = JSON.parse(productocarrito);
+        this.lista = JSON.parse(productocarrito).map((product:Product) => {
+          product.price = parseFloat(product.price.toString());
+          return product;
+        });
       }
-      this.dataSource.data = this.lista;
-      
+      this.dataSource.data = this.lista;  
       localStorage.setItem('productocarrito2', JSON.stringify(this.lista));
-
-
-
   }
   getTotalCost() {
-    return this.dataSource.data.map(t => t.price).reduce((acc, value) => acc + value, 0);
+    var a:number=0;
+    a = this.dataSource.data.reduce((total,product)=>total+product.price,0);
+    return a    
   }
-  pagar(): void {
-  
-  
+  pagar(): void {    
+    this.monto=this.getTotalCost();
+    localStorage.setItem('montofinal',JSON.stringify(this.monto));
+  }
+  eliminar(product:Product) {
+    const index = this.lista.findIndex(p => p.id === product.id);
+    if (index !== -1) {
+      this.lista.splice(index, 1);
+      this.dataSource.data = this.lista;
+    localStorage.setItem('productocarrito', JSON.stringify(this.lista));
+  }
   }
 
 
@@ -40,3 +51,4 @@ export class ShopingCartComponent {
 
 
 }
+

@@ -44,12 +44,13 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { RegisterProductComponent } from './component/register-product/register-product.component';
 import { SellerCatalogComponent } from './component/catalog/seller-catalog/seller-catalog.component';
 import { SellerProfileComponent } from './component/profile/seller-profile/seller-profile.component';
-import { ShopingCartComponent } from './component/shoping-cart/shoping-cart.component';
+import { ShopingCartComponent } from './component/pays/shoping-cart/shoping-cart.component';
 import { DialogComponent } from './component/home-seller/dialog/dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { PayComponent } from './component/pays/pay/pay.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -78,7 +79,8 @@ import { EditProductComponent } from './component/edit-product/edit-product.comp
     SellerProfileComponent,
     ShopingCartComponent,
     DialogComponent,
-    EditProductComponent
+    EditProductComponent,
+    PayComponent
 
   ],
   imports: [

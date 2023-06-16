@@ -30,4 +30,8 @@
     max-height: 800px; /* Ajusta este valor según tus necesidades */
     overflow-x: auto;
   }
+  .center-cell {
+    text-align: center;
+  }
+  
   

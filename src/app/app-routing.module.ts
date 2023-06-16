@@ -13,10 +13,11 @@ import { MySalesComponent } from './component/my-sales/my-sales.component';
 import { RegisterProductComponent } from './component/register-product/register-product.component';
 import { SellerCatalogComponent } from './component/catalog/seller-catalog/seller-catalog.component';
 import { SellerProfileComponent } from './component/profile/seller-profile/seller-profile.component';
-import { ShopingCartComponent } from './component/shoping-cart/shoping-cart.component';
+import { ShopingCartComponent } from './component/pays/shoping-cart/shoping-cart.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { UserListarComponent } from './component/user/user-listar/user-listar.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { PayComponent } from './component/pays/pay/pay.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,9 @@ const routes: Routes = [
   },
   {
     path: 'edit-product', component: EditProductComponent,
+  },
+  {
+    path: 'pay', component: PayComponent,
   },
 ];
 

@@ -24,15 +24,12 @@ export class EditProductComponent {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private categoryService: CategoryService,
-    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     const storedProduct = localStorage.getItem('editproductid');
     if (storedProduct) {
       this.productedit = JSON.parse(storedProduct);
     } 
-    this.categoryService.list().subscribe(data=>this.dataSource.data=data);
     this.form = new FormGroup({
       name: new FormControl(this.productedit.name, [Validators.required]),
       description: new FormControl(this.productedit.description, [Validators.required]),
