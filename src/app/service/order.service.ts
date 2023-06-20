@@ -17,7 +17,7 @@ export class OrderService {
   }
 
   insert(order : Order){
-     return this.http.post(this.url, order);
+     return this.http.post<Order>(this.url, order);
   }
   listId(id:number){
     return this.http.get<Order>(`${this.url}/${id}`);

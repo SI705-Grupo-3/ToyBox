@@ -77,6 +77,7 @@ export class RegisterProductComponent {
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
+    this.product.quantity = 1;
     if (this.form.valid) {
       if(this.edicion){
         this.productService.update(this.product).subscribe((data) =>

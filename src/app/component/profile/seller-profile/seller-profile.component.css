@@ -12,10 +12,10 @@ body {
   height: 100vh;
   background-color: #53afe5;
   justify-content: space-around;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 
-
+/*CARD GENERAL*/
 mat-card {
   max-width: 1200px;
   width: 100%;
@@ -27,36 +27,40 @@ mat-card {
   border-width: 1px;
   align-items: start;
 }
-
- .profile_menu {
+/*Card pequeno menu*/
+.profile_menu {
   width: 15%;
-  background-color: #007bff;
+  background-color: #007BFF;
   padding: 10px;
   margin: 60px;
   height: 30vh;
   position: relative;
-
-  flex-direction: column;
-
-} 
-.card1 {
-  width: 45%;
-  background-color: #007bff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
-button {
+/*card grande contenido*/
+.card1 {
+  background-color: #007BFF;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+.card1 h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+/*Botones del menu */
+button{
   margin: 0px 40px;
   background-color: #007bff;
   --mdc-protected-button-container-color: #07417e;
-  width: auto;
-  height: auto;
 }
 .mat-raised-button {
   height: 50px; /* Cambiar la altura a 50px */
 }
+
+/* //formulario  */
 mat-form-field {
   align-items: center;
   justify-content: center;

@@ -133,6 +133,7 @@ module.exports = function(){
         price: 2.40,
         stock: 190,
         category_id: 1,
+        quantity: 1,
       },
       {
         id: 2,
@@ -141,6 +142,7 @@ module.exports = function(){
         price: 8.50,
         stock: 180,
         category_id: 2,
+        quantity: 1,
       },
       {
         id: 3,
@@ -149,6 +151,7 @@ module.exports = function(){
         price: 11.90,
         stock: 105,
         category_id: 3,
+        quantity: 1,
       },
       {
         id: 4,
@@ -157,6 +160,7 @@ module.exports = function(){
         price: 36.50,
         stock: 50,
         category_id: 4,
+        quantity: 1,
       },
       {
         id: 5,
@@ -165,6 +169,7 @@ module.exports = function(){
         price: 8.90,
         stock: 83,
         category_id: 5,
+        quantity: 1,
       },
       {
         id: 6,
@@ -173,6 +178,7 @@ module.exports = function(){
         price: 25.00,
         stock: 95,
         category_id: 6,
+        quantity: 1,
       },
       {
         id: 7,
@@ -181,6 +187,7 @@ module.exports = function(){
         price: 12.80,
         stock: 40,
         category_id: 7,
+        quantity: 1,
       },
       {
         id: 8,
@@ -189,6 +196,7 @@ module.exports = function(){
         price: 205.60,
         stock: 80,
         category_id: 8,
+        quantity: 1,
       },
       {
         id: 9,
@@ -197,6 +205,7 @@ module.exports = function(){
         price: 96.50,
         stock: 150,
         category_id: 9,
+        quantity: 1,
       },
       {
         id: 10,
@@ -205,6 +214,7 @@ module.exports = function(){
         price: 20.00,
         stock: 300,
         category_id: 10,
+        quantity: 1,
       },
     ],
     categories: [

@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
 import { Order } from 'src/app/model/order';
 import { User } from 'src/app/model/user';
 import { OrderService } from 'src/app/service/order.service';
-import { DatePipe } from '@angular/common';
-
-
+import { OrderDetailService } from 'src/app/service/order-detail.service';
+import { Product } from 'src/app/model/product';
+import { Order_Detail } from 'src/app/model/order_detail';
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -15,6 +14,9 @@ import { DatePipe } from '@angular/common';
 })
 export class PayComponent {
   order:Order= new Order();
+  order_detail:Order_Detail= new Order_Detail();
+  id_order:number;
+  lista:Product[] = [];
   user:User = new User();
   form: FormGroup = new FormGroup({});
   errorMessage: string;
@@ -22,8 +24,14 @@ export class PayComponent {
 
    constructor(
     private orderService: OrderService,
+    private order_detailService: OrderDetailService,
     private router: Router,
-   ) {}
+   ) {
+    const storedProducts = localStorage.getItem('productocarrito2');
+    if (storedProducts) {
+      this.lista = JSON.parse(storedProducts);
+    }
+   }
    ngOnInit() {
     //traer usuario
     const storedUser = localStorage.getItem('usuario');
@@ -35,36 +43,32 @@ export class PayComponent {
     if (storedMonto) {
       this.order.total_amount = JSON.parse(storedMonto);
     } 
-
-
-  ///fecha 
+    //fecha 
     this.order.date = new Date();
     this.form = new FormGroup({
       usuario: new FormControl({value:this.user.name+" "+this.user.last_name,disabled:true}),
       date: new FormControl({value:this.order.date,disabled:true},[Validators.required]),
       shipping_address: new FormControl('', [Validators.required]),
-      total_amount: new FormControl({value:this.order.total_amount,disabled:true}, [Validators.required]),    
+      total_amount: new FormControl({value:this.order.total_amount,disabled:true}, [Validators.required]),
     }
     );
-    console.log(this.order);
-    
    }
    getCurrentDate(): string {
     const currentDate = new Date();
     return currentDate.toISOString().substring(0, 10);
   }
-
   pagar(): void {
     this.order.shipping_address=this.form.value['shipping_address'];
     this.order.state = "ENTREGADO";
     this.order.User_id= this.user.id;
-    console.log(this.order);
     if (this.form.valid) {
       this.orderService.insert(this.order).subscribe((data) =>
         this.router.navigate(['orders']).finally(()=>{
+          localStorage.setItem('order_id', JSON.stringify(data.id));
           localStorage.removeItem('montofinal'); 
           localStorage.removeItem('productocarrito');
           localStorage.removeItem('productocarrito2');
+          this.agregarorden_detail();
           this.router.navigate(['/home-buyer']);
         })
       );
@@ -75,5 +79,64 @@ export class PayComponent {
    volver() {
     localStorage.removeItem('montofinal'); 
     this.router.navigate(['/shoping-cart']).finally(()=>window.location.reload());
-   }
+  }
+  agregarorden_detail() {
+    // Jalar id order
+    const storedId = localStorage.getItem('order_id');
+    if (storedId) {
+      this.id_order = JSON.parse(storedId)
+    }
+    localStorage.removeItem('order_id'); 
+  
+    // Arreglo de productos repetidos                    
+    const insertedProducts: number[] = [];
+    console.log(this.lista);
+  
+    for (const producto of this.lista) {
+
+      let isProductRegistered = false;
+      for (const insertedProduct of insertedProducts) {
+       if (insertedProduct === producto.id) {
+          isProductRegistered = true;
+          break;
+        }
+      }
+
+       if (isProductRegistered) {
+         console.log(`El producto ${producto.id} ya ha sido registrado.`);
+          continue; // Saltar a la siguiente iteración del bucle
+        }
+      const order_detail = {
+        id_order: this.id_order,
+        id_product: producto.id,
+        quantity: this.calculateTotalQuantity(producto.id),
+        amount: producto.price
+      };
+      this.order_detailService.insert(order_detail).subscribe(
+        (data) => {
+          // El producto se ha registrado correctamente
+          console.log(`Producto registrado: ${producto.id}`);
+          
+        },
+        (error) => {
+          console.error(`Error al registrar el producto ${producto.id}:`, error);
+        }
+      );
+      insertedProducts.push(producto.id);
+    }
+  
+    console.log(insertedProducts);
+  }
+  calculateTotalQuantity(productId: number): number {
+    let totalQuantity = 0;
+  
+    for (const product of this.lista) {
+      if (product.id === productId) {
+        totalQuantity += product.quantity;
+      }
+    }
+    return totalQuantity;
+  }
+
 }
+

@@ -3,7 +3,7 @@
     <h1 style="text-align: center;">Carrito de compras</h1>
 <mat-card-content>
   <div class="table-container">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+<table mat-table [dataSource]="getProductsfilterRepeat()" class="mat-elevation-z8" matSort>
     <!-- Item Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef class="center-cell"> Items </th>
@@ -16,6 +16,12 @@
       <th mat-header-cell *matHeaderCellDef class="center-cell"> Precio </th>
       <td mat-cell *matCellDef="let element" class="center-cell"> {{element.price | currency}} </td>
       <td mat-footer-cell *matFooterCellDef class="center-cell"> {{getTotalCost() | currency}} </td>
+    </ng-container>
+    <!--  AMOUNT COLUMN -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef class="center-cell"> Cantidad </th>
+      <td mat-cell *matCellDef="let element" class="center-cell"> {{calculateTotalQuantity(element.id)}} </td>
+      <td mat-footer-cell *matFooterCellDef class="center-cell"></td>
     </ng-container>
     <!-- Opciones Column -->
     <ng-container matColumnDef="quitar">
