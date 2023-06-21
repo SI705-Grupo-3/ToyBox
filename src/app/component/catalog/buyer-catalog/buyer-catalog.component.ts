@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/model/category';
@@ -15,9 +16,12 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class BuyerCatalogComponent implements OnInit{
   lista: Product[] = [];
+  lista2: Product[] = [];
+  categoryselect: number;
+  preciomax: number;
+  preciomin: number;
   carrito: Product[] = [];
   errorMessage: string;
-  listaCateg: Category[] = [];
   dataSource= new MatTableDataSource<Category>();
   constructor(
     private productService: ProductService,
@@ -29,7 +33,7 @@ export class BuyerCatalogComponent implements OnInit{
   ) {}
   ngOnInit(): void {
     this.errorMessage="";
-    this.productService.list().subscribe((data) => (this.lista = data));
+    this.productService.list().subscribe((data) => (this.lista = data, this.lista2=data));
     this.categoryService.list().subscribe(data=>this.dataSource.data=data);
     const productocarrito = localStorage.getItem('productocarrito2');
       if (productocarrito) {
@@ -44,8 +48,29 @@ export class BuyerCatalogComponent implements OnInit{
     );
   }
   applyFilters(){
+    this.lista=this.lista2;
+    //precios
+    if (this.preciomin || this.preciomax) {
+          this.lista=this.lista.filter(product => {
+           return product.price >= this.preciomin && product.price <= this.preciomax;      
+          });
+    }
+    //categorias
+    if (this.categoryselect) {
+          this.lista=this.lista.filter(product => {
+           return product.category_id === this.categoryselect;      
+          });
+    }
+  }
+  borrarfilters(){
+    this.lista=this.lista2;
+    this.preciomax=0;
+    this.preciomin=0;
+    window.location.reload();
+  }
 
-
+  onCategorySelection(event: MatSelectChange) {
+    this.categoryselect = event.value;
   }
 
   enviarcarrito(product: Product){

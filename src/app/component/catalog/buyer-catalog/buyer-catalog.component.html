@@ -15,7 +15,7 @@
           <div class="filters" style="display: flex; flex-direction: column">
             <mat-form-field>
               <mat-label>Categoría</mat-label>
-              <mat-select placeholder="Seleccione una categoría">
+              <mat-select placeholder="Seleccione una categoría" (selectionChange)="onCategorySelection($event)">
                 <mat-option
                   *ngFor="let category of dataSource.data"
                   [value]="category.id"
@@ -25,12 +25,21 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field>
-              <mat-label>Precio</mat-label>
-              <input matInput (keyup)="applyFilters()" type="text" />
+              <mat-label>Precio max</mat-label>
+              <input matInput [(ngModel)]="preciomax" matInput  type="text" />
+              <mat-hint> Enter price to filter items. </mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Precio min</mat-label>
+              <input matInput [(ngModel)]="preciomin" matInput  type="text" />
               <mat-hint> Enter price to filter items. </mat-hint>
             </mat-form-field>
             <button mat-raised-button (click)="applyFilters()" color="primary">
               Filtrar
+            </button>
+            <br>
+            <button mat-raised-button (click)="borrarfilters()" color="primary">
+              Borrar Filtros
             </button>
           </div>
         </mat-card>
