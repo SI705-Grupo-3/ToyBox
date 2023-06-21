@@ -19,8 +19,8 @@ export class OrderDetailService {
   insert(order_detail : Order_Detail){
      return this.http.post(this.url, order_detail);
   }
-  listId(id_order: number, id_product: number){
-    return this.http.get<Order_Detail>(`${this.url}/${id_order}/${id_product}`); 
+  listId(id_order: number){
+    return this.http.get<Order_Detail>(`${this.url}/${id_order}`); 
   }
   update(order_detail: Order_Detail){
     return this.http.put<Order_Detail>(this.url+"/"+ order_detail.id_order+"/"+ order_detail.id_product, order_detail);

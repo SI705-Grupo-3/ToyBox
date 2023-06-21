@@ -101,7 +101,6 @@ export class PayComponent {
           break;
         }
       }
-
        if (isProductRegistered) {
          console.log(`El producto ${producto.id} ya ha sido registrado.`);
           continue; // Saltar a la siguiente iteración del bucle

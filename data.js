@@ -122,7 +122,59 @@ module.exports = function(){
         password: "321",
       }
     ],
-    product_registrations: [
+    product_registrations: [     /* [
+      {
+          id_user: 2,
+          id_product: 1,
+          id: 1
+      },
+      {
+          id_user: 4,
+          id_product: 2,
+          id: 2
+      },
+       {
+          id_user: 6,
+          id_product: 3,
+          id: 3
+      },
+      {
+        id_user: 8,
+        id_product: 4,
+        id: 4
+    },
+    {
+        id_user: 10,
+        id_product: 5,
+        id: 5
+    },
+    {
+        id_user: 12,
+        id_product: 6,
+        id: 6
+    },
+    {
+        id_user: 2,
+        id_product: 7,
+        id: 7
+    },
+    {
+        id_user: 2,
+        id_product: 8,
+        id: 8
+    },
+    {
+        id_user: 2,
+        id_product: 9,
+        id: 9
+    },
+    {
+        id_user: 2,
+        id_product: 10,
+        id: 10
+    }, */
+  
+
 
     ],
     products: [

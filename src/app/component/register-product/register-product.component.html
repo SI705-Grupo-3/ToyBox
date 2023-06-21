@@ -53,6 +53,15 @@
               [value]="productedit.stock" 
             />
           </mat-form-field>
+          <br>
+
+          <div class="custom-file-container">
+            <label class="custom-file-title">Subir imagen</label>
+            <input type="file" name="imageFile" class="custom-file-input" (change)="onFileSelected($event)">
+            <label class="custom-file-label">Seleccionar archivo</label>
+          </div>
+                     
+  
           <p style="color: red">{{ errorMessage }}</p>
           <div class="actions">
             <button mat-raised-button color="accent" type="submit">

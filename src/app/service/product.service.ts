@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   insert(product : Product){
-     return this.http.post(this.url, product);
+     return this.http.post<Product>(this.url, product);
   }
   listId(id:number){
     return this.http.get<Product>(`${this.url}/${id}`);

@@ -78,3 +78,24 @@
   .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     border-width: 2px;
   }
+
+  .custom-file-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .custom-file-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .custom-file-input {
+    margin-bottom: 8px;
+  }
+  
+  .custom-file-label {
+    margin-bottom: 8px;
+  }
+  
+  
+  

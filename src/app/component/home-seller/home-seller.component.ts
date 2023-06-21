@@ -6,6 +6,9 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user';
+import { ProductRegisterService } from 'src/app/service/product-register.service';
+import { Product_register } from 'src/app/model/product_register';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home-seller',
@@ -14,10 +17,12 @@ import { User } from 'src/app/model/user';
 })
 export class HomeSellerComponent implements OnInit {
   lista: Product[] = [];
+  lista2: Product_register[] = [];
   productselected: Product;
   errorMessage: string;
   constructor(
     private productService: ProductService,
+    private productRegisterService: ProductRegisterService,
     private router: Router,
     public route: ActivatedRoute,
     private dialog: MatDialog,
@@ -26,7 +31,15 @@ export class HomeSellerComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.errorMessage="";
-    this.productService.list().subscribe((data) => (this.lista = data));
+    this.productRegisterService.list().subscribe((data) => {
+    this.lista2 = data;
+
+    const productIds = this.lista2.map((item) => item.id_product);
+    const observables = productIds.map((productId) => this.productService.listId(productId));
+      forkJoin(observables).subscribe((products: Product[]) => {
+        this.lista = products.filter((product) => !!product);
+      });
+    }); 
 
   }
 
