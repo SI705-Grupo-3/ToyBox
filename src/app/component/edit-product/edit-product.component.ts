@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/service/product.service';
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/service/category.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -13,17 +14,21 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class EditProductComponent {
   productedit:Product = new Product();
+  productreg:Product=new Product();
   product:Product=new Product();
   form: FormGroup = new FormGroup({});
   dataSource= new MatTableDataSource<Category>();
   errorMessage: string;
+  selectedFile:any
 
   id: number = 0;
   edicion: boolean = true; 
 
+
   constructor(
     private productService: ProductService,
     private router: Router,
+    private http:HttpClient
   ) {}
   ngOnInit(): void {
     const storedProduct = localStorage.getItem('editproductid');
@@ -64,4 +69,35 @@ export class EditProductComponent {
     localStorage.removeItem('editproductid'); 
     this.router.navigate(['/home-seller']).finally(()=>window.location.reload());
   }
+  onFileSelected(event: any) {
+    const file: File | null = event.target?.files?.[0] || null;
+    this.selectedFile = file;
+
+  }
+
+  uploadFile(event: any) {
+    const file: File = this.selectedFile;
+    if (file) {
+    const productId = this.productreg.id; // Reemplaza esto con el identificador real del producto
+    const fileName = `producto(${productId})`; // Generar el nombre del archivo
+  
+    const formData = new FormData();
+    formData.append('image', this.selectedFile);
+  
+    this.http.post('http://localhost:4200/assets/img', formData).subscribe(
+      (response) => {
+        // Procesar la respuesta del servidor si es necesario
+        console.log('Archivo subido exitosamente');
+      },
+      (error) => {
+        // Manejar el error en caso de que ocurra
+        console.error('Error al subir el archivo', error);
+      }
+    );
+    }
+    else {
+      console.error('No se seleccionó ningún archivo');
+    
+    }
+  } 
 }
