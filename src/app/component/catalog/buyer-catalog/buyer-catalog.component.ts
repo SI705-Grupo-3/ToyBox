@@ -56,9 +56,12 @@ export class BuyerCatalogComponent implements OnInit{
     }
     //categorias
     if (this.categoryselect) {
-          this.lista=this.lista.filter(product => {
-           return product.category_id === this.categoryselect;      
+      console.log(this.categoryselect);
+      console.log(this.lista);
+          this.lista=this.lista.filter((product:Product) => {
+           return product.category_id === this.categoryselect;     
           });
+          console.log(this.lista);
     }
   }
   borrarfilters(){

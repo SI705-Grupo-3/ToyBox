@@ -51,4 +51,14 @@ export class ProductService {
   delete(id: number) {
     return this.http.delete(this.url+"/"+id);
  }
+ listcategoryid(id: number) {
+  const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+  return this.http.get<Product[]>(this.url+"/listCategory/"+id,{headers});
+ }
 }

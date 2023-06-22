@@ -7,6 +7,7 @@ import { OrderService } from 'src/app/service/order.service';
 import { OrderDetailService } from 'src/app/service/order-detail.service';
 import { Product } from 'src/app/model/product';
 import { Order_Detail } from 'src/app/model/order_detail';
+import { ProductService } from 'src/app/service/product.service';
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -26,6 +27,7 @@ export class PayComponent {
     private orderService: OrderService,
     private order_detailService: OrderDetailService,
     private router: Router,
+    private productService: ProductService,
    ) {
     const storedProducts = localStorage.getItem('productocarrito2');
     if (storedProducts) {
@@ -132,8 +134,10 @@ export class PayComponent {
     for (const product of this.lista) {
       if (product.id === productId) {
         totalQuantity += product.quantity;
+        
       }
     }
+
     return totalQuantity;
   }
 
