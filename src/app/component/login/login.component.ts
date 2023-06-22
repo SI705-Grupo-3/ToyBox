@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit{
   user: User = new User();
   user2: User =new User();
   idg: number;
+  token: string;
 
   errorMessage: string;
   constructor(
@@ -37,8 +39,10 @@ export class LoginComponent implements OnInit{
 
     if(this.form.valid){
       this.userService.login(this.user.username, this.user.password)
-      .subscribe(result => { console.log(result);
-        localStorage.setItem('token', JSON.stringify(result));
+      .subscribe((result: any) => { console.log(result);
+        this.token = result.jwttoken;
+
+        localStorage.setItem('token',JSON.stringify(this.token));
         if(result!=null){
           this.userService.getUser(this.user.username, this.user.password).subscribe(user1 =>{
             localStorage.setItem('usuario', JSON.stringify(user1));
