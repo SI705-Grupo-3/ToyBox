@@ -37,28 +37,23 @@ export class LoginComponent implements OnInit{
 
     if(this.form.valid){
       this.userService.login(this.user.username, this.user.password)
-      .subscribe(result => {
-        if(result===true){
-          this.userService.getId(this.user.username, this.user.password).subscribe(id4 => this.userService.listId(id4).subscribe(user5 =>{this.userService.sendUser(user5);console.log(user5);localStorage.setItem("usuario",JSON.stringify(user5))}));
-          //-------------
-
-
-
-          //-------------
-          this.userService.getType(this.user.username, this.user.password).subscribe(type => {
-            const userType = type.toLowerCase();
-            if(userType === "cliente"){
+      .subscribe(result => { console.log(result);
+        localStorage.setItem('token', JSON.stringify(result));
+        if(result!=null){
+          this.userService.getUser(this.user.username, this.user.password).subscribe(user1 =>{
+            localStorage.setItem('usuario', JSON.stringify(user1));
+            if(user1.type.toLowerCase() === "cliente"){
               this.router.navigate(['/home-buyer']).finally(()=>window.location.reload());
 
             }else{
               this.router.navigate(['/home-seller']).finally(()=>window.location.reload());
             }
-          });
+
+          })
         }else{
           this.errorMessage = "Usuario o contraseña incorrecta.";
           this.form.reset();
         }
-
       }
       );
     }else{

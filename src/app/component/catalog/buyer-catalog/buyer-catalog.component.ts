@@ -49,7 +49,6 @@ export class BuyerCatalogComponent implements OnInit{
   }
   applyFilters(){
     this.lista=this.lista2;
-    //precios
     if (this.preciomin || this.preciomax) {
           this.lista=this.lista.filter(product => {
            return product.price >= this.preciomin && product.price <= this.preciomax;      

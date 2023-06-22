@@ -4,6 +4,7 @@ import { Observable, filter, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
 import { Subject } from 'rxjs';
+import { Token } from '@angular/compiler';
 
 const baseUrl = environment.base;
 
@@ -11,23 +12,9 @@ const baseUrl = environment.base;
   providedIn: 'root'
 })
 export class UserService {
-  private url = `${baseUrl}/users`;//alt+96
+  private url = `${baseUrl}/user`;//alt+96
+  private authenticate=`${baseUrl}/authenticate`;
   //-------------------------
-  subject= new Subject();
-
-  
-
-  sendUser(my_object:User) {
-    this.subject.next(my_object);
-  }
-
-  getUser() {
-    
-    return this.subject.asObservable()
-    
-  }
-
-
 
   //----------------------------
   currentUser: any;//variable para almacenar usuario 
@@ -36,55 +23,27 @@ export class UserService {
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<User[]>(this.url);
+    return this.http.get<User[]>(this.url+"/list");
     this.currentUser //http://localhost:5000/api/users
   }
-
   register(user : User){
-     return this.http.post(this.url, user);
+     return this.http.post(this.url+"/register", user);
   }
   listId(id:number){
-    return this.http.get<User>(`${this.url}/${id}`);
+    return this.http.get<User>(this.url+"/list/"+id);
   }
   update(user: User){
-    return this.http.put(this.url+"/"+ user.id, user);
+    return this.http.put(this.url+"/update", user);
   }
   delete(id: string) {
-    return this.http.delete(this.url+"/"+id);
+    return this.http.delete(this.url+"/delete/"+id);
  }
   login(username: string, password: string){
-    /* var user: User = new User();
-    user.username = username;
-    user.password = password; */
-     return this.http.get<User[]>(this.url).pipe(
-      map(users => users.find(user => user.username === username && user.password === password) != null)
-    ); 
-    /* return this.http.post(this.url+"/login",user) */
-
+    return this.http.post<Token>(this.authenticate,{username,password});
   }
-  getType(username: string, password: string): Observable<string> {
-    return this.http.get<User[]>(this.url).pipe(
-      map(users => {
-        const user = users.find(user => user.username === username && user.password === password);
-        return user ? user.type : '';
-      })
-    );
+  getUser(username: string, password: string){
+    return this.http.get<User>(this.url+"/get?username="+username+"&password="+password);
   }
-
-   getId(username: string, password: string): Observable<number> {
-    return this.http.get<User[]>(this.url).pipe(
-      map(users => {
-        const user = users.find(user => user.username === username && user.password === password);
-        return user ? user.id : 0;
-      })
-    );
-  } 
-
-
   
-
-
-  
-
-  
+ 
 }

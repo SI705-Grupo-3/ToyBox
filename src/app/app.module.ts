@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CategoryComponent } from './component/category/category.component';
-import { CategoryListarComponent } from './component/category/category-listar/category-listar.component';
 import { UserComponent } from './component/user/user.component';
 import { UserListarComponent } from './component/user/user-listar/user-listar.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -58,8 +56,6 @@ import { PayComponent } from './component/pays/pay/pay.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
-    CategoryListarComponent,
     UserComponent,
     UserListarComponent,
     HomeComponent,

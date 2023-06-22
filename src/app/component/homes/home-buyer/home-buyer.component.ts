@@ -22,15 +22,6 @@ export class HomeBuyerComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.categoryService.list().subscribe(data =>
-      this.lista = data);
-
-      this.userService.getUser().subscribe((message:any) => {
-        this.data = message;
-        console.log(message); 
-        console.log(this.data);
-      }
-      );
-      
-        
+      this.lista = data);   
 }
 }
