@@ -11,22 +11,58 @@ const baseUrl = environment.base;
 })
 export class CategoryService {
   private url = `${baseUrl}/category`;//alt+96
+  token:string;
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<Category[]>(this.url+"/list"); //http://localhost:5000/categories
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Category[]>(this.url+"/list",{headers}); //http://localhost:5000/categories
   }
 
   insert(category : Category){
-     return this.http.post(this.url+"/register", category);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+     return this.http.post(this.url+"/register", category,{headers});
   }
   listId(id:number){
-    return this.http.get<Category>(`${this.url}/${id}`);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Category>(this.url+"/list/"+id,{headers});
   }
   update(cat: Category){
-    return this.http.put(this.url+"/update"+ cat.id, cat);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put(this.url+"/update"+ cat.id, cat,{headers});
   }
   delete(id: string) {
-    return this.http.delete(this.url+"/delete/"+id);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.delete(this.url+"/delete/"+id,{headers});
   }
 }

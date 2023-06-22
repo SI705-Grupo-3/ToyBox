@@ -10,17 +10,39 @@ const baseUrl = environment.base;
   providedIn: 'root'
 })
 export class ProductRegisterService {
-  private url = `${baseUrl}/product_registrations`;//alt+96
+  private url = `${baseUrl}/product-registration`;//alt+96
+  token:string;
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<Product_register[]>(this.url); //http://localhost:5000/product_registers
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Product_register[]>(this.url+"/list",{headers});
   }
   insert(product_register : Product_register){
-     return this.http.post(this.url, product_register);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+     return this.http.post(this.url+"/register", product_register,{headers});
   }
   listId(id_user: number, id_product: number){
-    return this.http.get<Product_register>(`${this.url}?user_id=${id_user}&product_id=${id_product}`); 
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Product_register>(`${this.url}?user_id=${id_user}&product_id=${id_product}`,{headers}); 
   }
   update(product_register: Product_register){
     return this.http.put<Product_register>(this.url+"/"+ product_register.id_user+"/"+ product_register.id_product, product_register);

@@ -10,22 +10,42 @@ const baseUrl = environment.base;
   providedIn: 'root'
 })
 export class OrderDetailService {
-  private url = `${baseUrl}/order_details`;//alt+96
+  private url = `${baseUrl}/order-detail`;//alt+96
+  token:string ;
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<Order_Detail[]>(this.url); //http://localhost:5000/order_details
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Order_Detail[]>(this.url+"/list",{headers}); 
   }
   insert(order_detail : Order_Detail){
-     return this.http.post(this.url, order_detail);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+     return this.http.post(this.url+"/register", order_detail,{headers}); 
   }
   listId(id_order: number){
-    return this.http.get<Order_Detail>(`${this.url}/${id_order}`); 
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Order_Detail>(this.url+"/list/"+id_order,{headers}); 
   }
   update(order_detail: Order_Detail){
     return this.http.put<Order_Detail>(this.url+"/"+ order_detail.id_order+"/"+ order_detail.id_product, order_detail);
   }
-  delete(id_order: number, id_product: number) {
-    return this.http.delete<Order_Detail>(this.url+"/"+id_order+"/"+id_product); 
-  }
+
 }

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit{
 
         localStorage.setItem('token',JSON.stringify(this.token));
         if(result!=null){
-          this.userService.getUser(this.user.username, this.user.password).subscribe(user1 =>{
+          this.userService.getUser(this.user.username).subscribe(user1 =>{
             localStorage.setItem('usuario', JSON.stringify(user1));
             if(user1.type.toLowerCase() === "cliente"){
               this.router.navigate(['/home-buyer']).finally(()=>window.location.reload());

@@ -10,18 +10,40 @@ const baseUrl = environment.base;
   providedIn: 'root'
 })
 export class ProductService {
-  private url = `${baseUrl}/products`;//alt+96
+  private url = `${baseUrl}/product`;//alt+96
+  token:string;
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<Product[]>(this.url); //http://localhost:5000/products
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Product[]>(this.url+"/list",{headers}); //http://localhost:5000/products
   }
 
   insert(product : Product){
-     return this.http.post<Product>(this.url, product);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+     return this.http.post<Product>(this.url+"/register",product,{headers}); 
   }
   listId(id:number){
-    return this.http.get<Product>(`${this.url}/${id}`);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Product>(this.url+"/list/"+id,{headers});
   }
   update(prod: Product){
     return this.http.put(this.url+"/"+ prod.id, prod);

@@ -9,18 +9,40 @@ const baseUrl = environment.base;
   providedIn: 'root'
 })
 export class OrderService {
-  private url = `${baseUrl}/orders`;//alt+96
+  private url = `${baseUrl}/order`;//alt+96
+  token:string;
 
   constructor(private http:HttpClient) { } //inyectar httpClient
   list():Observable<any>{
-    return this.http.get<Order[]>(this.url); //http://localhost:5000/orders
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Order[]>(this.url+"/list",{headers});
   }
 
   insert(order : Order){
-     return this.http.post<Order>(this.url, order);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+     return this.http.post<Order>(this.url+"/register", order,{headers}); 
   }
   listId(id:number){
-    return this.http.get<Order>(`${this.url}/${id}`);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<Order>(this.url+"/list/"+id,{headers});
   }
   update(ord: Order){
     return this.http.put(this.url+"/"+ ord.id, ord);

@@ -45,9 +45,9 @@ export class RegisterComponent {
       this.userService.register(this.user).subscribe((data) => {
         this.router.navigate(['users']);
         this.userService
-          
 
-          .getUser(this.user.username, this.user.password)
+
+          .getUser(this.user.username)
           .subscribe((user1) =>{localStorage.setItem('usuario', JSON.stringify(user1));}
                 
           );

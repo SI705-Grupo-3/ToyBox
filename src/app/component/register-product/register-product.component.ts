@@ -94,6 +94,7 @@ export class RegisterProductComponent {
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
     this.product.quantity = 1;
+    console.log(this.product.category_id);
     if (this.form.valid) {
         this.productService.insert(this.product).subscribe((data) =>
         this.router.navigate(['products']).finally(()=>{

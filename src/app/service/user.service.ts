@@ -34,27 +34,47 @@ export class UserService {
      return this.http.post(this.url+"/register", user);
   }
   listId(id:number){
-    return this.http.get<User>(this.url+"/list/"+id);
-  }
-  update(user: User){
-    return this.http.put(this.url+"/update", user);
-  }
-  delete(id: string) {
-    return this.http.delete(this.url+"/delete/"+id);
- }
-  login(username: string, password: string){
-    return this.http.post<Token>(this.authenticate,{username,password});
-  }
-  getUser(username: string, password: string){
     const storedUser = localStorage.getItem('token');
     if (storedUser) {
       this.token = JSON.parse(storedUser);
     }
-    console.log(this.token);
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-    return this.http.get<User>(this.url+"/get?username="+username+"&password=$2a$12$1LGMIjBDlUoHwwfx2prk1O02gCe1FHDw2fyFA9eEp49Em2.8K1J6S",{ headers });
+    return this.http.get<User>(this.url+"/list/"+id, {headers});
+  }
+  update(user: User){
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put(this.url+"/update", user,{headers});
+  }
+  delete(id: string) {
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.delete(this.url+"/delete/"+id,{headers});
+ }
+  login(username: string, password: string){
+    return this.http.post<Token>(this.authenticate,{username,password});
+  }
+  getUser(username: string){
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.get<User>(this.url+"/get?username="+username,{ headers });
   }
 
 
