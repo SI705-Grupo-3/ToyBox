@@ -65,7 +65,7 @@ export class PayComponent {
   pagar(): void {
     this.order.shipping_address=this.form.value['shipping_address'];
     this.order.state = "ENTREGADO";
-    this.order.User_id= this.user.id;
+    this.order.user.id= this.user.id;
     const dialogRef = this.dialog.open(PaymentMethodComponent);
 
     if (this.form.valid) {
@@ -120,6 +120,7 @@ export class PayComponent {
           continue; // Saltar a la siguiente iteración del bucle
         }
       const order_detail = {
+        id: 0,
         id_order: this.id_order,
         id_product: producto.id,
         quantity: this.calculateTotalQuantity(producto.id),

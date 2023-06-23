@@ -29,7 +29,7 @@ export class RegisterProductComponent {
   selectedFile:any
 
   id: number = 0;
-  edicion: boolean = true; 
+  edicion: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -46,7 +46,7 @@ export class RegisterProductComponent {
       this.id = datas['id']; //capturando el id del listado
       console.log(this.id);
 
-      this.edicion = datas['id'] != null; 
+      this.edicion = datas['id'] != null;
       console.log(this.edicion);
 
       this.init();
@@ -59,7 +59,7 @@ export class RegisterProductComponent {
       stock: new FormControl('', [Validators.required]),
       category_id: new FormControl('', [Validators.required]),
     });
-    
+
   }
 
   init() {
@@ -78,7 +78,7 @@ export class RegisterProductComponent {
         });
       };
     }
-  
+
 
   register(): void {
     const storedUser = localStorage.getItem('usuario');
@@ -87,14 +87,14 @@ export class RegisterProductComponent {
     }
     this.productregister.id_user =this.user.id;
 
-    
-    this.product.category_id = this.form.value['category_id'];
+
+    this.product.category.id = this.form.value['category_id'];
     this.product.name = this.form.value['name'];
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
     this.product.quantity = 1;
-    console.log(this.product.category_id);
+
     if (this.form.valid) {
         this.productService.insert(this.product).subscribe((data) =>
         this.router.navigate(['products']).finally(()=>{
@@ -113,7 +113,7 @@ export class RegisterProductComponent {
       this.productreg = JSON.parse(storedproduct);
     }
     this.uploadFile(event);
-    
+
     this.productregister.id_user= this.user.id;
     this.productregister.id_product= this.productreg.id;
     localStorage.removeItem('product_id');
@@ -135,10 +135,10 @@ export class RegisterProductComponent {
     if (file) {
     const productId = this.productreg.id; // Reemplaza esto con el identificador real del producto
     const fileName = `producto(${productId})`; // Generar el nombre del archivo
-  
+
     const formData = new FormData();
     formData.append('image', this.selectedFile);
-  
+
     this.http.post('http://localhost:4200/assets/img', formData).subscribe(
       (response) => {
         // Procesar la respuesta del servidor si es necesario
@@ -152,10 +152,10 @@ export class RegisterProductComponent {
     }
     else {
       console.error('No se seleccionó ningún archivo');
-    
-    }
-  } 
 
-  
-  
+    }
+  }
+
+
+
 }

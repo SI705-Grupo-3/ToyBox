@@ -51,7 +51,7 @@ export class BuyerCatalogComponent implements OnInit{
     this.lista=this.lista2;
     if (this.preciomin || this.preciomax) {
           this.lista=this.lista.filter(product => {
-           return product.price >= this.preciomin && product.price <= this.preciomax;      
+           return product.price >= this.preciomin && product.price <= this.preciomax;
           });
     }
     //categorias
@@ -59,7 +59,7 @@ export class BuyerCatalogComponent implements OnInit{
       console.log(this.categoryselect);
       console.log(this.lista);
           this.lista=this.lista.filter((product:Product) => {
-           return product.category_id === this.categoryselect;     
+           return product.category.id === this.categoryselect;
           });
           console.log(this.lista);
     }

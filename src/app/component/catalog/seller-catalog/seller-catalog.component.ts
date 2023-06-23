@@ -53,13 +53,13 @@ export class SellerCatalogComponent implements OnInit{
     //precios
     if (this.preciomin || this.preciomax) {
           this.lista=this.lista.filter(product => {
-           return product.price >= this.preciomin && product.price <= this.preciomax;      
+           return product.price >= this.preciomin && product.price <= this.preciomax;
           });
     }
     //categorias
     if (this.categoryselect) {
           this.lista=this.lista.filter(product => {
-           return product.category_id === this.categoryselect;      
+           return product.category.id === this.categoryselect;
           });
     }
   }

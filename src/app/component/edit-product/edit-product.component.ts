@@ -22,7 +22,7 @@ export class EditProductComponent {
   selectedFile:any
 
   id: number = 0;
-  edicion: boolean = true; 
+  edicion: boolean = true;
 
 
   constructor(
@@ -34,20 +34,20 @@ export class EditProductComponent {
     const storedProduct = localStorage.getItem('editproductid');
     if (storedProduct) {
       this.productedit = JSON.parse(storedProduct);
-    } 
+    }
     this.form = new FormGroup({
       name: new FormControl(this.productedit.name, [Validators.required]),
       description: new FormControl(this.productedit.description, [Validators.required]),
       price: new FormControl(this.productedit.price, [Validators.required]),
-      stock: new FormControl(this.productedit.stock, [Validators.required]),      
+      stock: new FormControl(this.productedit.stock, [Validators.required]),
     });
-   
+
   }
 
 
   editar() {
     this.product.id =this.productedit.id;
-    this.product.category_id = this.productedit.category_id;
+    this.product.category.id = this.productedit.category.id;
     this.product.name = this.form.value['name'];
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
@@ -56,7 +56,7 @@ export class EditProductComponent {
     if (this.form.valid) {
         this.productService.update(this.product).subscribe((data) =>
           this.router.navigate(['products']).finally(()=>{
-            localStorage.removeItem('editproductid'); 
+            localStorage.removeItem('editproductid');
             this.router.navigate(['/home-seller']);
           })
         );
@@ -66,7 +66,7 @@ export class EditProductComponent {
   }
 
   volver() {
-    localStorage.removeItem('editproductid'); 
+    localStorage.removeItem('editproductid');
     this.router.navigate(['/home-seller']).finally(()=>window.location.reload());
   }
   onFileSelected(event: any) {
@@ -80,10 +80,10 @@ export class EditProductComponent {
     if (file) {
     const productId = this.productreg.id; // Reemplaza esto con el identificador real del producto
     const fileName = `producto(${productId})`; // Generar el nombre del archivo
-  
+
     const formData = new FormData();
     formData.append('image', this.selectedFile);
-  
+
     this.http.post('http://localhost:4200/assets/img', formData).subscribe(
       (response) => {
         // Procesar la respuesta del servidor si es necesario
@@ -97,7 +97,7 @@ export class EditProductComponent {
     }
     else {
       console.error('No se seleccionó ningún archivo');
-    
+
     }
-  } 
+  }
 }
