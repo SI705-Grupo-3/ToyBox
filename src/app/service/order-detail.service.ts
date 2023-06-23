@@ -45,7 +45,14 @@ export class OrderDetailService {
     return this.http.get<Order_Detail>(this.url+"/list/"+id_order,{headers});
   }
   update(order_detail: Order_Detail){
-    return this.http.put<Order_Detail>(this.url+"/update", order_detail);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put<Order_Detail>(this.url+"/update", order_detail, {headers});
   }
 
 }

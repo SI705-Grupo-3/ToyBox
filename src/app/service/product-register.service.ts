@@ -45,9 +45,23 @@ export class ProductRegisterService {
     return this.http.get<Product_register>(`${this.url}?user_id=${id_user}&product_id=${id_product}`,{headers});
   }
   update(product_register: Product_register){
-    return this.http.put<Product_register>(this.url+"/update", product_register);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put<Product_register>(this.url+"/update", product_register, {headers});
   }
   delete(id: number) {
-    return this.http.delete<Product_register>(this.url+"/delete"+id);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.delete<Product_register>(this.url+"/delete/"+id, {headers});
   }
 }

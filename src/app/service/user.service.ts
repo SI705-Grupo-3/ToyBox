@@ -20,7 +20,7 @@ export class UserService {
   //-------------------------
 
   //----------------------------
-  currentUser: any;//variable para almacenar usuario 
+  currentUser: any;//variable para almacenar usuario
   idfalso:number;//
   userChanged: Subject<any> = new Subject<any>();
   token:string;
@@ -31,7 +31,14 @@ export class UserService {
     this.currentUser //http://localhost:5000/api/users
   }
   register(user : User){
-     return this.http.post(this.url+"/register", user);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.post(this.url+"/register", user, {headers});
   }
   listId(id:number){
     const storedUser = localStorage.getItem('token');
@@ -78,5 +85,5 @@ export class UserService {
   }
 
 
- 
+
 }

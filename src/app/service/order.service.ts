@@ -32,7 +32,7 @@ export class OrderService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-     return this.http.post<Order>(this.url+"/register", order,{headers}); 
+     return this.http.post<Order>(this.url+"/register", order,{headers});
   }
   listId(id:number){
     const storedUser = localStorage.getItem('token');
@@ -45,10 +45,24 @@ export class OrderService {
     return this.http.get<Order>(this.url+"/list/"+id,{headers});
   }
   update(ord: Order){
-    return this.http.put(this.url+"/"+ ord.id, ord);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put(this.url+"/update"+ ord.id, ord, {headers});
   }
   delete(id: string) {
-    return this.http.delete(this.url+"/"+id);
- 
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.delete(this.url+"/delete/"+id, {headers});
+
   }
 }

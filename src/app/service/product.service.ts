@@ -33,7 +33,7 @@ export class ProductService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-     return this.http.post<Product>(this.url+"/register",product,{headers}); 
+     return this.http.post<Product>(this.url+"/register",product,{headers});
   }
   listId(id:number){
     const storedUser = localStorage.getItem('token');
@@ -46,10 +46,24 @@ export class ProductService {
     return this.http.get<Product>(this.url+"/list/"+id,{headers});
   }
   update(prod: Product){
-    return this.http.put(this.url+"/"+ prod.id, prod);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.put(this.url+"/update", prod, {headers});
   }
   delete(id: number) {
-    return this.http.delete(this.url+"/"+id);
+    const storedUser = localStorage.getItem('token');
+    if (storedUser) {
+      this.token = JSON.parse(storedUser);
+    }
+    const headers = {
+      Authorization: `Bearer ${this.token}`
+    };
+    return this.http.delete(this.url+"/delete/"+id, {headers});
  }
  listcategoryid(id: number) {
   const storedUser = localStorage.getItem('token');
