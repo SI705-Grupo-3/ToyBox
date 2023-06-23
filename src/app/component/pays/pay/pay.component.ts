@@ -8,6 +8,8 @@ import { OrderDetailService } from 'src/app/service/order-detail.service';
 import { Product } from 'src/app/model/product';
 import { Order_Detail } from 'src/app/model/order_detail';
 import { ProductService } from 'src/app/service/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -28,6 +30,7 @@ export class PayComponent {
     private order_detailService: OrderDetailService,
     private router: Router,
     private productService: ProductService,
+    private dialog: MatDialog
    ) {
     const storedProducts = localStorage.getItem('productocarrito2');
     if (storedProducts) {
@@ -39,13 +42,13 @@ export class PayComponent {
     const storedUser = localStorage.getItem('usuario');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
-    } 
+    }
     //traer monto
     const storedMonto = localStorage.getItem('montofinal');
     if (storedMonto) {
       this.order.total_amount = JSON.parse(storedMonto);
-    } 
-    //fecha 
+    }
+    //fecha
     this.order.date = new Date();
     this.form = new FormGroup({
       usuario: new FormControl({value:this.user.name+" "+this.user.last_name,disabled:true}),
@@ -63,14 +66,23 @@ export class PayComponent {
     this.order.shipping_address=this.form.value['shipping_address'];
     this.order.state = "ENTREGADO";
     this.order.User_id= this.user.id;
+    const dialogRef = this.dialog.open(PaymentMethodComponent);
+
     if (this.form.valid) {
       this.orderService.insert(this.order).subscribe((data) =>
         this.router.navigate(['orders']).finally(()=>{
           localStorage.setItem('order_id', JSON.stringify(data.id));
-          localStorage.removeItem('montofinal'); 
+          localStorage.removeItem('montofinal');
           localStorage.removeItem('productocarrito');
           localStorage.removeItem('productocarrito2');
           this.agregarorden_detail();
+          dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+
+            } else {
+
+            }
+          });
           this.router.navigate(['/home-buyer']);
         })
       );
@@ -79,7 +91,7 @@ export class PayComponent {
   }
   }
    volver() {
-    localStorage.removeItem('montofinal'); 
+    localStorage.removeItem('montofinal');
     this.router.navigate(['/shoping-cart']).finally(()=>window.location.reload());
   }
   agregarorden_detail() {
@@ -88,12 +100,12 @@ export class PayComponent {
     if (storedId) {
       this.id_order = JSON.parse(storedId)
     }
-    localStorage.removeItem('order_id'); 
-  
-    // Arreglo de productos repetidos                    
+    localStorage.removeItem('order_id');
+
+    // Arreglo de productos repetidos
     const insertedProducts: number[] = [];
     console.log(this.lista);
-  
+
     for (const producto of this.lista) {
 
       let isProductRegistered = false;
@@ -117,7 +129,7 @@ export class PayComponent {
         (data) => {
           // El producto se ha registrado correctamente
           console.log(`Producto registrado: ${producto.id}`);
-          
+
         },
         (error) => {
           console.error(`Error al registrar el producto ${producto.id}:`, error);
@@ -125,16 +137,16 @@ export class PayComponent {
       );
       insertedProducts.push(producto.id);
     }
-  
+
     console.log(insertedProducts);
   }
   calculateTotalQuantity(productId: number): number {
     let totalQuantity = 0;
-  
+
     for (const product of this.lista) {
       if (product.id === productId) {
         totalQuantity += product.quantity;
-        
+
       }
     }
 

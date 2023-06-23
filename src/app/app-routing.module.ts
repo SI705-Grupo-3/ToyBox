@@ -18,6 +18,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { UserListarComponent } from './component/user/user-listar/user-listar.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
 import { PayComponent } from './component/pays/pay/pay.component';
+import { PaymentMethodComponent } from './component/pays/pay/payment-method/payment-method.component';
 
 const routes: Routes = [
   {

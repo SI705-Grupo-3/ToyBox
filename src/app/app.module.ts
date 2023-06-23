@@ -49,6 +49,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
 import { PayComponent } from './component/pays/pay/pay.component';
+import { PaymentMethodComponent } from './component/pays/pay/payment-method/payment-method.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -76,7 +77,8 @@ import { PayComponent } from './component/pays/pay/pay.component';
     ShopingCartComponent,
     DialogComponent,
     EditProductComponent,
-    PayComponent
+    PayComponent,
+    PaymentMethodComponent
 
   ],
   imports: [
