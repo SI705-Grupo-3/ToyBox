@@ -1,4 +1,7 @@
 /*background-color: #b6e3fa;*/
+mat-dialog-content{
+  min-height: 560px;
+}
 .dialog-title {
   font-size: 2rem;
   margin-bottom: 10px;
