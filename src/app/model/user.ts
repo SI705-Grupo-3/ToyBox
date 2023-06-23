@@ -7,4 +7,5 @@ export class User{
   phone: number = 0;
   username: string = "";
   password: string = "";
+  image: string = "";
 }

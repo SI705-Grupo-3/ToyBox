@@ -41,6 +41,7 @@ export class RegisterComponent {
     this.user.phone = this.form.value['phone'];
     this.user.username = this.form.value['username'];
     this.user.password = this.form.value['password'];
+    this.user.image = "user1.png";
     if (this.form.valid) {
       this.userService.register(this.user).subscribe((data) => {
         this.router.navigate(['users']);
@@ -49,7 +50,7 @@ export class RegisterComponent {
 
           .getUser(this.user.username)
           .subscribe((user1) =>{localStorage.setItem('usuario', JSON.stringify(user1));}
-                
+
           );
       });
       if(this.form.value['type'].toLowerCase()=="cliente"){ //inicio comprador o vendedor

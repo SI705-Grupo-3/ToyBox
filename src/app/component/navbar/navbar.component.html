@@ -23,8 +23,8 @@
         <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'vendedor'">
           <img
             class="user"
-            src="assets/img/user.png"
-            alt="Logo ToyBox"
+            [src]="'../../../assets/img/' + user.image"
+            alt="Usuario"
             mat-raised-button
             [routerLink]="'/seller-profile'"
             style="width: 45px; height: 45px;"
@@ -33,8 +33,8 @@
         <button class="btn-img" mat-button *ngIf="usuariotipo.toLowerCase() === 'cliente'">
           <img
             class="user"
-            src="assets/img/user.png"
-            alt="Logo ToyBox"
+            [src]="'../../../assets/img/' + user.image"
+            alt="Usuario"
             mat-raised-button
             [routerLink]="'/buyer-profile'"
             style="width: 45px; height: 45px"
