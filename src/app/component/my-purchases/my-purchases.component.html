@@ -10,14 +10,14 @@
         <h1 style="text-align: center;">MIS COMPRAS</h1>
         <div class="example-container mat-elevation-z8">
           <mat-table #table [dataSource]="dataSource" matSort>
-      
+
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Id.
               </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
             </ng-container>
-      
+
             <ng-container matColumnDef="date">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Fecha de pedido
@@ -26,7 +26,7 @@
                 {{ element.date }}
               </mat-cell>
             </ng-container>
-      
+
             <ng-container matColumnDef="shipping_address">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Direccion de envio
@@ -35,7 +35,7 @@
                 {{ element.shipping_address }}
               </mat-cell>
             </ng-container>
-      
+
             <ng-container matColumnDef="state">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Estado
@@ -44,7 +44,7 @@
                 {{ element.state }}
               </mat-cell>
             </ng-container>
-      
+
             <ng-container matColumnDef="total_amount">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Monto total
@@ -53,20 +53,20 @@
                 {{ element.total_amount }}
               </mat-cell>
             </ng-container>
-      
+
             <ng-container matColumnDef="User_id">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Id de Usuario
               </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                {{ element.User_id }}
+                {{ element.user.id }}
               </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
           </mat-table>
-      
+
         </div>
 </mat-card>
 </div>

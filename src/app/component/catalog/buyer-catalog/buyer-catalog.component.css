@@ -14,14 +14,14 @@ html, body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
     height: auto;
   }
   .car {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     padding-top: 2rem;
   }
   .btn-user{
@@ -48,7 +48,7 @@ html, body {
     text-shadow: 1px 1px 0px black;
     text-decoration: double;
     padding: 0.5em;
-    padding-top: 3.5rem;
+    padding-top: 1.5rem;
   }
   mat-card {
     cursor: pointer;
@@ -64,7 +64,7 @@ html, body {
   mat-card:hover {
     transform: translateY(-5px);
   }
-  
+
   mat-card img {
     object-fit: cover;
     align-items: center;
@@ -111,7 +111,7 @@ html, body {
     padding-top: 1em;
     justify-content: center;
   }
-  
+
   .back button{
     background-color: #ffffff;
   }
@@ -126,6 +126,5 @@ html, body {
   .header{
     justify-content: center;
     align-content: start;
-  
+
   }
-  

@@ -1,49 +1,82 @@
 <div class="container">
-<mat-card>
-    <h1 style="text-align: center;">Carrito de compras</h1>
-<mat-card-content>
-  <div class="table-container">
-<table mat-table [dataSource]="getProductsfilterRepeat()" class="mat-elevation-z8" matSort>
-    <!-- Item Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="center-cell"> Items </th>
-      <td mat-cell *matCellDef="let element" class="center-cell"> {{element.name}} </td>
-      <td mat-footer-cell *matFooterCellDef class="center-cell"> Totaless </td>
-    </ng-container>
-  
-    <!-- Cost Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef class="center-cell"> Precio </th>
-      <td mat-cell *matCellDef="let element" class="center-cell"> {{element.price | currency}} </td>
-      <td mat-footer-cell *matFooterCellDef class="center-cell"> {{getTotalCost() | currency}} </td>
-    </ng-container>
-    <!--  AMOUNT COLUMN -->
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef class="center-cell"> Cantidad </th>
-      <td mat-cell *matCellDef="let element" class="center-cell"> {{calculateTotalQuantity(element.id)}} </td>
-      <td mat-footer-cell *matFooterCellDef class="center-cell"></td>
-    </ng-container>
-    <!-- Opciones Column -->
-    <ng-container matColumnDef="quitar">
-      <th mat-header-cell *matHeaderCellDef class="center-cell"> Borrar del carrito </th>
-      <td mat-cell *matCellDef="let element" class="center-cell">
-        <button mat-raised-button color="warn" aria-label="Eliminar" (click)="eliminar(element)" >
-          <span class="material-icons">delete</span>
-        </button>
-      </td>
-      <td mat-footer-cell *matFooterCellDef class="center-cell"></td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-  </table>
-  <br>
-</div>
-<br>
-<button mat-raised-button color="accent" (click)="pagar()" routerLink="/pay">
-  Pagar
-</button>
-</mat-card-content>
-</mat-card>
+  <mat-card>
+    <h1 style="text-align: center">Carrito de compras</h1>
+    <mat-card-content>
+      <div class="table-container">
+        <table
+          mat-table
+          [dataSource]="getProductsfilterRepeat()"
+          class="mat-elevation-z8"
+          matSort
+        >
+          <!-- Item Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="center-cell">Items</th>
+            <td mat-cell *matCellDef="let element" class="center-cell">
+              {{ element.name }}
+            </td>
+            <td mat-footer-cell *matFooterCellDef class="center-cell">
+              Totales
+            </td>
+          </ng-container>
+
+          <!-- Cost Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef class="center-cell">
+              Precio
+            </th>
+            <td mat-cell *matCellDef="let element" class="center-cell">
+              {{ element.price | currency }}
+            </td>
+            <td mat-footer-cell *matFooterCellDef class="center-cell">
+              {{ getTotalCost() | currency }}
+            </td>
+          </ng-container>
+          <!--  AMOUNT COLUMN -->
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef class="center-cell">Stock</th>
+            <td mat-cell *matCellDef="let element" class="center-cell">
+              {{ calculateTotalQuantity(element.id) }}
+            </td>
+            <td mat-footer-cell *matFooterCellDef class="center-cell"></td>
+          </ng-container>
+          <!-- Opciones Column -->
+          <ng-container matColumnDef="quitar">
+            <th mat-header-cell *matHeaderCellDef class="center-cell">
+              Borrar del carrito
+            </th>
+            <td mat-cell *matCellDef="let element" class="center-cell">
+              <button
+                mat-raised-button
+                color="warn"
+                aria-label="Eliminar"
+                (click)="eliminar(element)"
+              >
+                <span class="material-icons">delete</span>
+              </button>
+            </td>
+            <td mat-footer-cell *matFooterCellDef class="center-cell"></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+        <br />
+      </div>
+      <br />
+      <button mat-raised-button color="primary" routerLink="/buyer-catalog">
+        Volver
+      </button>
+      <span class="button-space"></span>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="pagar()"
+        routerLink="/pay"
+      >
+        Pagar
+      </button>
+    </mat-card-content>
+  </mat-card>
 </div>
