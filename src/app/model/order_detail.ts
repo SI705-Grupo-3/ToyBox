@@ -1,7 +1,10 @@
+import { Order } from "./order";
+import { Product } from "./product";
+
 export class Order_Detail{
   id: number = 0;
-  id_order: number=0;
-  id_product: number=0;
+  order: Order = new Order();
+  product: Product = new Product();
   quantity:number=0;
   amount:number=0;
 }

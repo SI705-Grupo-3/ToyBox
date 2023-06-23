@@ -85,7 +85,7 @@ export class RegisterProductComponent {
     if (storedUser) {
       this.user = JSON.parse(storedUser);
     }
-    this.productregister.id_user =this.user.id;
+    this.productregister.user.id =this.user.id;
 
 
     this.product.category.id = this.form.value['category_id'];
@@ -93,7 +93,6 @@ export class RegisterProductComponent {
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
-    this.product.quantity = 1;
 
     if (this.form.valid) {
         this.productService.insert(this.product).subscribe((data) =>
@@ -114,8 +113,8 @@ export class RegisterProductComponent {
     }
     this.uploadFile(event);
 
-    this.productregister.id_user= this.user.id;
-    this.productregister.id_product= this.productreg.id;
+    this.productregister.user.id= this.user.id;
+    this.productregister.product.id= this.productreg.id;
     localStorage.removeItem('product_id');
     this.productRegisterService.insert(this.productregister).subscribe((data) =>
           this.router.navigate(['product_registrations']).finally(()=>{

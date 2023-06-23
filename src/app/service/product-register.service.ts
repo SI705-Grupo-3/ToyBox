@@ -42,12 +42,12 @@ export class ProductRegisterService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-    return this.http.get<Product_register>(`${this.url}?user_id=${id_user}&product_id=${id_product}`,{headers}); 
+    return this.http.get<Product_register>(`${this.url}?user_id=${id_user}&product_id=${id_product}`,{headers});
   }
   update(product_register: Product_register){
-    return this.http.put<Product_register>(this.url+"/"+ product_register.id_user+"/"+ product_register.id_product, product_register);
+    return this.http.put<Product_register>(this.url+"/update", product_register);
   }
-  delete(id_user: number, id_product: number) {
-    return this.http.delete<Product_register>(this.url+"/"+id_user+"/"+id_product); 
+  delete(id: number) {
+    return this.http.delete<Product_register>(this.url+"/delete"+id);
   }
 }

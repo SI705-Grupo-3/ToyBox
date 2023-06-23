@@ -8,5 +8,4 @@ export class Product{
   stock: number = 0;
   image: string = "";
   category: Category = new Category();
-  quantity: number = 0;
 }

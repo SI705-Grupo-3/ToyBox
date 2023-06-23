@@ -42,12 +42,12 @@ export class MySalesComponent {
     // Llamar a los servicios correspondientes para obtener los datos necesarios
     this.orderDetailService.list().subscribe((orderDetails: Order_Detail[]) => {
       orderDetails.forEach(orderDetail => {
-        this.orderService.listId(orderDetail.id_order).subscribe((order: Order) => {
+        this.orderService.listId(orderDetail.order.id).subscribe((order: Order) => {
           this.productRegisterService.list().subscribe((productRegisters: Product_register[]) => {
-            const filteredProducts = productRegisters.filter(register => register.id_user === this.user.id && register.id_product === orderDetail.id_product);
+            const filteredProducts = productRegisters.filter(register => register.user.id === this.user.id && register.product.id === orderDetail.product.id);
             if (filteredProducts.length > 0) {
               const productRegister = filteredProducts[0];
-              this.productService.listId(productRegister.id_product).subscribe((product1: Product) => {// obtener producto
+              this.productService.listId(productRegister.product.id).subscribe((product1: Product) => {// obtener producto
               const venta: Ventas = {
                 id_order: order.id,
                 name_product: product1.name,
@@ -65,9 +65,9 @@ export class MySalesComponent {
       });
     });
   };
-    
-  
-  
+
+
+
 }
 
-  
+

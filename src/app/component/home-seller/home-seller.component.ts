@@ -34,12 +34,12 @@ export class HomeSellerComponent implements OnInit {
     this.productRegisterService.list().subscribe((data) => {
     this.lista2 = data;
 
-    const productIds = this.lista2.map((item) => item.id_product);
+    const productIds = this.lista2.map((item) => item.product.id);
     const observables = productIds.map((productId) => this.productService.listId(productId));
       forkJoin(observables).subscribe((products: Product[]) => {
         this.lista = products.filter((product) => !!product);
       });
-    }); 
+    });
 
   }
 

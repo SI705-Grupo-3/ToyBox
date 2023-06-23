@@ -10,6 +10,7 @@ import { Order_Detail } from 'src/app/model/order_detail';
 import { ProductService } from 'src/app/service/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { Category } from 'src/app/model/category';
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -119,13 +120,30 @@ export class PayComponent {
          console.log(`El producto ${producto.id} ya ha sido registrado.`);
           continue; // Saltar a la siguiente iteración del bucle
         }
-      const order_detail = {
-        id: 0,
-        id_order: this.id_order,
-        id_product: producto.id,
-        quantity: this.calculateTotalQuantity(producto.id),
-        amount: producto.price
-      };
+        const order_detail: Order_Detail = {
+          id: 0,
+          order: {
+            id: this.id_order,
+            date: new Date(Date.now()),
+            shipping_address: '',
+            state: '',
+            total_amount: 0,
+            user: new User
+          },
+          product: {
+            id: producto.id,
+            name: '',
+            description: '',
+            price: 0,
+            stock: 0,
+            image: '',
+            category: new Category(),
+          },
+          quantity: this.calculateTotalQuantity(producto.id),
+          amount: producto.price
+        };
+
+
       this.order_detailService.insert(order_detail).subscribe(
         (data) => {
           // El producto se ha registrado correctamente
@@ -146,7 +164,7 @@ export class PayComponent {
 
     for (const product of this.lista) {
       if (product.id === productId) {
-        totalQuantity += product.quantity;
+        totalQuantity += product.stock;
 
       }
     }

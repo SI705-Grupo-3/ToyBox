@@ -22,7 +22,7 @@ export class OrderDetailService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-    return this.http.get<Order_Detail[]>(this.url+"/list",{headers}); 
+    return this.http.get<Order_Detail[]>(this.url+"/list",{headers});
   }
   insert(order_detail : Order_Detail){
     const storedUser = localStorage.getItem('token');
@@ -32,7 +32,7 @@ export class OrderDetailService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-     return this.http.post(this.url+"/register", order_detail,{headers}); 
+     return this.http.post(this.url+"/register", order_detail,{headers});
   }
   listId(id_order: number){
     const storedUser = localStorage.getItem('token');
@@ -42,10 +42,10 @@ export class OrderDetailService {
     const headers = {
       Authorization: `Bearer ${this.token}`
     };
-    return this.http.get<Order_Detail>(this.url+"/list/"+id_order,{headers}); 
+    return this.http.get<Order_Detail>(this.url+"/list/"+id_order,{headers});
   }
   update(order_detail: Order_Detail){
-    return this.http.put<Order_Detail>(this.url+"/"+ order_detail.id_order+"/"+ order_detail.id_product, order_detail);
+    return this.http.put<Order_Detail>(this.url+"/update", order_detail);
   }
 
 }
