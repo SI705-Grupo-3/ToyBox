@@ -79,12 +79,12 @@ export class PayComponent {
           this.agregarorden_detail();
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-
+              this.router.navigate(['/home-buyer']);
             } else {
 
             }
           });
-          this.router.navigate(['/home-buyer']);
+
         })
       );
   } else {

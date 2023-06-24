@@ -59,7 +59,9 @@
       <button
         mat-raised-button
         color="warn"
-        [mat-dialog-close]="true"
+        (click)="pagar()"
+        [disabled]="!this.form.valid"
+        mat-dialog-close
         cdkFocusInitial
       >
         Pagar
