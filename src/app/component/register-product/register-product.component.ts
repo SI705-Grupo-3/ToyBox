@@ -104,7 +104,7 @@ export class RegisterProductComponent {
         this.productService.insert(this.product).subscribe((data) =>
         this.router.navigate(['products']).finally(()=>{
         localStorage.setItem('product_id', JSON.stringify(data));
-        //this.detalleRegistro(event);
+        this.detalleRegistro(event);
       })
       );
 

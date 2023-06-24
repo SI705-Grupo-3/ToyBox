@@ -24,7 +24,8 @@ export class EditProductComponent {
   id: number = 0;
   edicion: boolean = true;
 
-
+  nombreArchivo:string="";
+  selectedImage:string="";
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -52,6 +53,11 @@ export class EditProductComponent {
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
+    if(this.selectedFile!=null){
+      this.product.image = this.selectedFile.name;
+    }else{
+      this.product.image = "producto.png";
+    }
     console.log(this.product.name, this.product.description, this.product);
     if (this.form.valid) {
         this.productService.update(this.product).subscribe((data) =>
@@ -69,7 +75,10 @@ export class EditProductComponent {
     localStorage.removeItem('editproductid');
     this.router.navigate(['/home-seller']).finally(()=>window.location.reload());
   }
-  onFileSelected(event: any) {
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+  }
+  /*onFileSelected(event: any) {
     const file: File | null = event.target?.files?.[0] || null;
     this.selectedFile = file;
 
@@ -99,5 +108,5 @@ export class EditProductComponent {
       console.error('No se seleccionó ningún archivo');
 
     }
-  }
+  }*/
 }

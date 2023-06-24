@@ -18,7 +18,7 @@
             <mat-label>Descripción</mat-label>
             <input
               matInput
-              formControlName="description" 
+              formControlName="description"
             >
           </mat-form-field>
           <br>
@@ -39,12 +39,18 @@
           </mat-form-field>
 
           <br>
-
           <div class="custom-file-container">
+            <button type="button" mat-raised-button color="basic" style="background-color: #edfcfb;" (click)="fileInput.click()">Subir Imagen</button>
+            <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+            <br>
+            <span class="file-name">{{selectedFile?.name}}</span>
+          </div>
+          <!--<div class="custom-file-container">
             <label class="custom-file-title">Subir imagen</label>
             <input type="file" name="imageFile" class="custom-file-input" (change)="onFileSelected($event)">
             <label class="custom-file-label"></label>
           </div>
+        -->
 
 
 
