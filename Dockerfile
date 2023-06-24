@@ -1,5 +1,5 @@
 #Primera Etapa
-FROM node:16-alpine3.13 as build-step
+FROM node:18.16-alpine as build-step
 
 WORKDIR /app
 
@@ -12,5 +12,6 @@ COPY . /app
 RUN npm run build --prod
 
 #Segunda Etapa
-FROM nginx:1.17.1-alpine
-COPY --from=build-step /app/dist/toybox /usr/share/nginx/html
+FROM nginx:1.25.1-alpine
+COPY --from=build-step /app/dist/toy-box /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
