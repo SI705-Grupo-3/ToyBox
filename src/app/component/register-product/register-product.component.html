@@ -18,7 +18,7 @@
             <mat-label>Nombre Producto</mat-label>
             <input
               matInput
-              [value]="productedit.name" 
+              [value]="productedit.name"
               placeholder="Ingresa nombre del producto"
               formControlName="name"
             >
@@ -30,7 +30,7 @@
               matInput
               placeholder="Ingresa una descripción del producto"
               formControlName="description"
-              [value]="productedit.description" 
+              [value]="productedit.description"
             >
           </mat-form-field>
           <br>
@@ -40,7 +40,7 @@
               matInput
               placeholder="Ingresa el precio"
               formControlName="price"
-              [value]="productedit.price" 
+              [value]="productedit.price"
             />
           </mat-form-field>
           <br>
@@ -50,18 +50,24 @@
               matInput
               placeholder="Ingresa el stock"
               formControlName="stock"
-              [value]="productedit.stock" 
+              [value]="productedit.stock"
             />
           </mat-form-field>
           <br>
+          <div class="custom-file-container">
+            <button type="button" mat-raised-button color="basic" style="background-color: #edfcfb;" (click)="fileInput.click()">Subir Imagen</button>
+            <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+            <br>
+            <span class="file-name">{{selectedFile?.name}}</span>
+          </div>
 
+          <!--
           <div class="custom-file-container">
             <label class="custom-file-title">Subir imagen</label>
             <input type="file" name="imageFile" class="custom-file-input" (change)="onFileSelected($event)">
             <label class="custom-file-label"></label>
           </div>
-                     
-  
+          -->
           <p style="color: red">{{ errorMessage }}</p>
           <div class="actions">
             <button mat-raised-button color="accent" type="submit">
@@ -70,7 +76,7 @@
           </div>
         </form>
         <div class="back">
-          <button mat-raised-button color="basic" routerLink="/home-seller">
+          <button mat-raised-button style="background-color: #076176; color: white" routerLink="/home-seller">
             Volver
           </button>
         </div>

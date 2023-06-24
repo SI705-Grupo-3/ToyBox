@@ -26,10 +26,13 @@ export class RegisterProductComponent {
   dataSource= new MatTableDataSource<Category>();
   //categorias:Category[];
   errorMessage: string;
-  selectedFile:any
+  selectedFile:any = null;
 
   id: number = 0;
   edicion: boolean = true;
+
+  nombreArchivo:string="";
+  selectedImage:string="";
 
   constructor(
     private productService: ProductService,
@@ -77,9 +80,7 @@ export class RegisterProductComponent {
           //category_id: new FormControl(data.category_id)
         });
       };
-    }
-
-
+  }
   register(): void {
     const storedUser = localStorage.getItem('usuario');
     if (storedUser) {
@@ -93,12 +94,17 @@ export class RegisterProductComponent {
     this.product.description = this.form.value['description'];
     this.product.price = this.form.value['price'];
     this.product.stock = this.form.value['stock'];
-
+    if(this.selectedFile!=null){
+      this.product.image = this.selectedFile.name;
+    }else{
+      this.product.image = "producto.png";
+    }
+    console.log(this.product.image);
     if (this.form.valid) {
         this.productService.insert(this.product).subscribe((data) =>
         this.router.navigate(['products']).finally(()=>{
         localStorage.setItem('product_id', JSON.stringify(data));
-        this.detalleRegistro(event);
+        //this.detalleRegistro(event);
       })
       );
 
@@ -106,15 +112,20 @@ export class RegisterProductComponent {
       this.errorMessage = 'Complete correctamente los campos.';
     }
   }
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+  }
   detalleRegistro(event: any) {
     const storedproduct = localStorage.getItem('product_id');
     if (storedproduct) {
       this.productreg = JSON.parse(storedproduct);
     }
-    this.uploadFile(event);
+    //this.uploadFile(event);
 
     this.productregister.user.id= this.user.id;
     this.productregister.product.id= this.productreg.id;
+
     localStorage.removeItem('product_id');
     this.productRegisterService.insert(this.productregister).subscribe((data) =>
           this.router.navigate(['product_registrations']).finally(()=>{
@@ -122,7 +133,7 @@ export class RegisterProductComponent {
           })
         );
   }
-
+  /*
   onFileSelected(event: any) {
     const file: File | null = event.target?.files?.[0] || null;
     this.selectedFile = file;
@@ -153,7 +164,7 @@ export class RegisterProductComponent {
       console.error('No se seleccionó ningún archivo');
 
     }
-  }
+  }*/
 
 
 
